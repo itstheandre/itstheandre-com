@@ -5,42 +5,43 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
-export const query = graphql`
-  query {
-    allSanityProject {
-      edges {
-        node {
-          title
-          description
-          slug {
-            current
-          }
-          id
-          body
-          bodyImage {
-            asset {
-              fluid {
-                src
-                srcSet
-              }
-            }
-          }
-          heroImage {
-            asset {
-              fluid {
-                src
-                srcSet
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query {
+//     allSanityProject {
+//       edges {
+//         node {
+//           title
+//           description
+//           slug {
+//             current
+//           }
+//           id
+//           body
+//           bodyImage {
+//             asset {
+//               fluid {
+//                 src
+//                 srcSet
+//               }
+//             }
+//           }
+//           heroImage {
+//             asset {
+//               fluid {
+//                 src
+//                 srcSet
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
 
-const IndexPage = ({ data }) => {
-  console.log(data)
+const IndexPage = () => {
+  // const IndexPage = ({ data }) => {
+  // console.log(data)
   return (
     <Layout>
       <SEO title="Home" />

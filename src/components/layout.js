@@ -7,10 +7,11 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
+import GlobalStyle from "../styles/GlobalStyles"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -25,8 +26,21 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <GlobalStyle />
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/testing">Testing</Link>
+        </li>
+      </ul>{" "}
+      <div className="test">TT-INTERPHASE MONO</div>
+      <h1 className="testH1">ROBOTO?</h1>
+      <p className="testH1">Roboto</p>
+      {children}
+      {/* <div
         style={{
           margin: `0 auto`,
           maxWidth: 960,
@@ -39,7 +53,7 @@ const Layout = ({ children }) => {
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
-      </div>
+      </div> */}
     </>
   )
 }
