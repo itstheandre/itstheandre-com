@@ -3,7 +3,6 @@ import { menuBarsWhite, menuBarsBlack } from "../lib/imageUpload"
 import GlobalStyle from "../styles/GlobalStyles"
 import { createGlobalStyle } from "styled-components"
 import { Link } from "gatsby"
-import LayoutTest from "../components/layout3"
 
 const GlobalStyle2 = createGlobalStyle`
 * {
@@ -21,9 +20,9 @@ body {
   overflow-x: hidden;
 }
 
-header {
+main {
   width: 100%;
-  height: 100vh;
+  ${"" /* height: 100vh; */}
   position: relative;
   background-color: #fa6c98;
   transition: transform 600ms;

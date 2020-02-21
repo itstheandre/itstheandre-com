@@ -1,26 +1,33 @@
-import React, { useState, useReducer } from "react"
+import React, { useReducer } from "react"
 import { menuBarsBlack, menuBarsWhite } from "../lib/imageUpload"
 import { createGlobalStyle } from "styled-components"
 import { Link } from "gatsby"
 import { useEffect } from "react"
+import Things from "./thingstodestroynext"
+import Nav from "./Navigation/Nav"
 
-const LayoutTest = () => {
+const LayoutTest = ({ children }) => {
   const { dispatch, state } = useNav()
   return (
-    <div
-      style={{
-        height: "70vh",
-        backgroundColor: "orange",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <button onClick={() => dispatch({ type: "SET_OPEN_CLOSE" })}>
-        Click me
-      </button>
-      <h1>{state.navOpen.toString()}</h1>
-    </div>
+    <>
+      <Nav navOpen={state.navOpen} />
+      <div
+        style={{
+          height: "70vh",
+          backgroundColor: "orange",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <button onClick={() => dispatch({ type: "SET_OPEN_CLOSE" })}>
+          Click me
+        </button>
+        <h1>{state.navOpen.toString()}</h1>
+        <h2>{state.verticalNav.toString()}</h2>
+      </div>
+      <Things />
+    </>
   )
 }
 
@@ -65,7 +72,7 @@ function useNav() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  console.log({ state })
+  // console.log({ state })
   return { dispatch, state }
 }
 
