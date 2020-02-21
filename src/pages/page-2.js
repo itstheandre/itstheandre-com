@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
-import { menuBarsWhite, menuBarsBlack } from "../lib/imageUpload"
+import { menuBarsWhite, menuBarsBlack } from "../utils/imageUpload"
 import GlobalStyle from "../styles/GlobalStyles"
 import { createGlobalStyle } from "styled-components"
 import { Link } from "gatsby"
+import LayoutTest from "../components/layout3"
 
 const GlobalStyle2 = createGlobalStyle`
 * {
@@ -20,9 +21,9 @@ body {
   overflow-x: hidden;
 }
 
-main {
+header {
   width: 100%;
-  ${"" /* height: 100vh; */}
+  height: 100vh;
   position: relative;
   background-color: #fa6c98;
   transition: transform 600ms;
@@ -59,7 +60,7 @@ height: ${({ scroll }) => (scroll ? "100vh" : "")};
 
     .h3 {
 
-align-self: center;
+    align-self: center;
     writing-mode: ${({ scroll }) => (scroll ? "vertical-rl" : "")};
    text-orientation: ${({ scroll }) => (scroll ? "sideways-right" : "")};
    transform: ${({ scroll }) => (scroll ? "rotate(180deg)" : "")};
@@ -82,12 +83,14 @@ align-self: center;
   transform: ${({ test }) => (test ? "" : "translateX(-25vw)")};
 }
 
+
+
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.9);
   z-index: 1000;
   display: ${({ test }) => (test ? "block" : "none")};
@@ -203,7 +206,7 @@ const Page3 = () => {
   }
 
   // console.log(scrollVal, test)
-  console.log({ scrollVal })
+  console.log({ test })
   return (
     <>
       <GlobalStyle />
@@ -288,11 +291,11 @@ const Page3 = () => {
             <div></div>
             <div></div>
           </div>
+          <div style={{ backgroundColor: "blue", height: "40vh" }}></div>
+          <div style={{ backgroundColor: "red", height: "40vh" }}></div>
+          <div style={{ backgroundColor: "green", height: "40vh" }}></div>
+          <div style={{ backgroundColor: "yellow", height: "40vh" }}></div>
         </header>
-        <div style={{ backgroundColor: "blue", height: "40vh" }}></div>
-        <div style={{ backgroundColor: "red", height: "40vh" }}></div>
-        <div style={{ backgroundColor: "green", height: "40vh" }}></div>
-        <div style={{ backgroundColor: "yellow", height: "40vh" }}></div>
       </div>
     </>
   )

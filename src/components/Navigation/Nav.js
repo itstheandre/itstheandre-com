@@ -1,52 +1,26 @@
 import React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
+import { menuBarsWhite, menuBarsBlack } from "../../utils/imageUpload"
+import { Navbar } from "../../styles/S_Layout"
 
-const StyledNav = styled.nav`
-  position: fixed;
-  left: 0;
-  width: 25vw;
-  height: 100vh;
-  background: #020a17;
-  padding: 1rem;
-  z-index: 1500;
-  overflow: hidden;
-  transition: transform 600ms;
-  transform: ${({ navOpen }) => (navOpen ? "" : "translateX(-25vw)")};
-`
+const Nav = ({ verticalNav, navOpen, dispatch }) => {
+  console.log(verticalNav)
+  //   console.log(state)
 
-const Nav = ({ navOpen }) => {
-  console.log(navOpen)
+  const imageBars = !navOpen ? menuBarsWhite : menuBarsBlack
   return (
-    <StyledNav navOpen={navOpen} className="sidebar">
-      <ul className="nav-list">
-        <li className="nav-item">
-          <Link to="/" className="nav-link">
-            Home
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/about" className="nav-link">
-            About Me
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/projects" className="nav-link">
-            Projects
-          </Link>
-        </li>
-        <li className="nav-item">
-          <a href="https://www.pioneersshow.com" className="nav-link">
-            Podcast
-          </a>
-        </li>
-        <li className="nav-item">
-          <Link to="/contact" className="nav-link">
-            Contact
-          </Link>
-        </li>
-      </ul>
-    </StyledNav>
+    <Navbar navOpen={navOpen} verticalNav={verticalNav}>
+      {" "}
+      <div className="bars">
+        <img
+          src={imageBars}
+          alt="menu bars"
+          onClick={() => dispatch({ type: "SET_OPEN_CLOSE" })}
+        />
+      </div>
+      <div className="h3">Hey, it's the André here</div>
+      <div className="empty"></div>
+    </Navbar>
   )
 }
 

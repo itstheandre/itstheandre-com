@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components"
-import { Roboto, TTMonoBold } from "../lib/fonts"
+import { Roboto, TTMonoBold } from "../utils/fonts"
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
 }
 html {
   font-size: 10px;
-  --roboto: ${Roboto};
+  --robotoFont: ${Roboto};
   --tt-mono : ${TTMonoBold}
 }
 :root {
@@ -17,16 +17,15 @@ html {
 }
 
 body {
-   font-family: var(--roboto);
+   font-family: var(--robotoFont);
    overflow-x: hidden
-
 }
+
+
 
 h1,h2,h3,h4,h5,h6 {
    font-family: var(--tt-mono)
 }
-
-
 
  a {
     text-decoration: none;
