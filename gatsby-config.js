@@ -5,6 +5,8 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    "gatsby-plugin-styled-components",
+
     {
       resolve: "gatsby-source-sanity",
       options: {

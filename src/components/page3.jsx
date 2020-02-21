@@ -3,7 +3,6 @@ import { menuBarsWhite, menuBarsBlack } from "../lib/imageUpload"
 import GlobalStyle from "../styles/GlobalStyles"
 import { createGlobalStyle } from "styled-components"
 import { Link } from "gatsby"
-import LayoutTest from "../components/layout3"
 
 const GlobalStyle2 = createGlobalStyle`
 * {
@@ -21,14 +20,14 @@ body {
   overflow-x: hidden;
 }
 
-header {
+main {
   width: 100%;
   height: 100vh;
   position: relative;
   background-color: #fa6c98;
   transition: transform 600ms;
   transform: ${({ test }) => {
-    return test ? "translateX(25vw) " : ""
+    return test ? "translateX(25vw)" : ""
   }}
 }
 
@@ -181,7 +180,7 @@ const Page3 = () => {
 
   useEffect(() => {
     const toBeSelected = s => document.querySelector(s)
-    // console.log("test")
+    console.log("test")
 
     window.addEventListener("scroll", handleScroll)
 
@@ -194,7 +193,7 @@ const Page3 = () => {
   }, [])
 
   function handleScroll() {
-    // console.log(scrollVal)
+    console.log(scrollVal)
     let yVal = window.scrollY
     if (yVal < 500) {
       setScrollVal(false)
@@ -204,12 +203,11 @@ const Page3 = () => {
   }
 
   // console.log(scrollVal, test)
-  console.log({ scrollVal })
+  console.log({ test })
   return (
     <>
       <GlobalStyle />
       <GlobalStyle2 test={test} scroll={scrollVal} />
-      {/* <LayoutTest /> */}
       <div>
         <nav className="sidebar">
           <ul className="nav-list">
@@ -225,7 +223,9 @@ const Page3 = () => {
             </li>
             <li className="nav-item">
               <div className="dropdown">
-                <button className="nav-link dropdown-toggle">Services</button>
+                <Link href="/" className="nav-link dropdown-toggle">
+                  Services
+                </Link>
                 <ul className="nav-list dropdown-content" id="my-dropdown">
                   <li className="nav-item">
                     <Link href="/" className="nav-link">
@@ -274,7 +274,7 @@ const Page3 = () => {
           <div className="h3">Hey, it's the André here</div>
           <div className="empty"></div>
         </div>
-        <header>
+        <main>
           <div className="overlay"></div>
 
           <div className="main-header-content">
@@ -289,7 +289,7 @@ const Page3 = () => {
             <div></div>
             <div></div>
           </div>
-        </header>
+        </main>
         <div style={{ backgroundColor: "blue", height: "40vh" }}></div>
         <div style={{ backgroundColor: "red", height: "40vh" }}></div>
         <div style={{ backgroundColor: "green", height: "40vh" }}></div>

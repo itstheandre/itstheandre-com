@@ -1,6 +1,6 @@
 import React from "react"
-import { graphql } from "gatsby"
-import ReactMarkdown from "react-markdown"
+// import { graphql } from "gatsby"
+// import ReactMarkdown from "react-markdown"
 import styled from "styled-components"
 
 // export const query = graphql`
