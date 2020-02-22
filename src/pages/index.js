@@ -13,7 +13,7 @@ const Page3 = () => {
         <div
           style={{
             margin: "0 auto",
-            width: "80vw",
+            width: "100%",
             height: "20vh",
             backgroundColor: "blue",
           }}

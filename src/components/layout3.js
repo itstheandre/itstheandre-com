@@ -1,8 +1,8 @@
-import React, { useReducer } from "react"
+import React from "react"
 import Sidebar from "./Navigation/Sidebar"
 import Nav from "./Navigation/Nav"
 import GlobalStyle from "../styles/GlobalStyles"
-import { LayoutBody } from "../styles/S_Layout"
+import { LayoutBody, BodyContainer } from "../styles/S_Layout"
 import { useNav } from "../lib/useNav"
 
 const Layout = ({ children }) => {
@@ -19,8 +19,11 @@ const Layout = ({ children }) => {
         dispatch={dispatch}
       />
       <LayoutBody navOpen={state.navOpen}>
-        <div className="overlay"></div>
-        {children}
+        <div
+          className="overlay"
+          onClick={() => dispatch({ type: "SET_OPEN_CLOSE" })}
+        ></div>
+        <BodyContainer>{children}</BodyContainer>
       </LayoutBody>
     </>
   )

@@ -22,7 +22,7 @@ const LayoutBody = styled.main`
 
 const Header = styled.header`
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   /* background-color: black; */
   background-color: ${({ color }) => color};
 `
@@ -45,6 +45,7 @@ const Navbar = styled.nav`
   flex-direction: ${({ verticalNav }) => (verticalNav ? "column" : "row")};
 
   .bars {
+    /* margin-left: 5rem; */
     background: blue;
     img {
       cursor: pointer;
@@ -98,4 +99,9 @@ const SideNav = styled.aside`
   }
 `
 
-export { LayoutBody, Header, Navbar, SideNav }
+const BodyContainer = styled.main`
+  width: 93.6rem;
+  margin: 0 auto;
+`
+
+export { LayoutBody, Header, Navbar, SideNav, BodyContainer }
