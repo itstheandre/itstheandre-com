@@ -18,6 +18,7 @@ html {
 
 body {
    font-family: var(--robotoFont);
+   font-size:1.6rem;
    overflow-x: hidden
 }
 
@@ -29,6 +30,35 @@ h1,h2,h3,h4,h5,h6 {
 
  a {
     text-decoration: none;
+  }
+
+  .heroText {
+     font-size: 10.3rem;
+     line-height: 12rem;
+     font-family: var(--tt-mono);
+     font-weight:bold;
+  }
+
+  .sectionText {
+      font-family: var(--robotoFont);
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      font-weight:normal;
+      line-height: 1.4rem;
+      letter-spacing: 0.2rem
+  }
+
+  .h1 {
+     font-weight: bold;
+     font-size: 3.6rem;
+     line-height: 4.8rem;
+  }
+
+  .h2 {
+     font-family: var(--robotoFont);
+     font-size:2.4rem;
+     font-weight: bold;
+     line-height:3rem;
   }
 `
 
