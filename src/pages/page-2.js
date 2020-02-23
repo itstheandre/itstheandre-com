@@ -3,7 +3,7 @@ import { menuBarsWhite, menuBarsBlack } from "../utils/imageUpload"
 import GlobalStyle from "../styles/GlobalStyles"
 import { createGlobalStyle } from "styled-components"
 import { Link } from "gatsby"
-import LayoutTest from "../components/layout3"
+import Layout from "../components/layout"
 
 const GlobalStyle2 = createGlobalStyle`
 * {

@@ -29,8 +29,9 @@ const Header = styled.header`
 
 const Navbar = styled.nav`
   position: fixed;
-  top: 1rem;
-  left: 1rem;
+  top: 5.5rem;
+  /* left: 11rem; */
+  margin-left: ${({ verticalNav }) => (verticalNav ? "11rem" : "")};
   font-size: 3rem;
   color: white;
   z-index: 20000;
@@ -45,15 +46,19 @@ const Navbar = styled.nav`
   flex-direction: ${({ verticalNav }) => (verticalNav ? "column" : "row")};
 
   .bars {
-    /* margin-left: 5rem; */
     background: blue;
+    position: relative;
     img {
+      margin-left: ${({ verticalNav }) => (verticalNav ? "" : "11rem")};
       cursor: pointer;
       margin-bottom: 0;
     }
   }
 
   .h3 {
+    position: ${({ verticalNav }) => (verticalNav ? "block" : "absolute")};
+    width: 100%;
+    text-align: center;
     align-self: center;
     writing-mode: ${({ verticalNav }) => (verticalNav ? "vertical-rl" : "")};
     text-orientation: ${({ verticalNav }) =>
