@@ -23,42 +23,64 @@ const LayoutBody = styled.main`
 const Header = styled.header`
   height: 100vh;
   width: 100%;
-  /* background-color: black; */
   background-color: ${({ color }) => color};
 `
 
 const Navbar = styled.nav`
   position: fixed;
   top: 5.5rem;
-  /* left: 11rem; */
-  margin-left: ${({ verticalNav }) => (verticalNav ? "11rem" : "")};
+  margin-left: ${({ verticalNav, navOpen }) => {
+    if (verticalNav && !navOpen) return "11rem"
+    else if (navOpen) return "0"
+    else return "0"
+  }};
   font-size: 3rem;
-  color: white;
+  color: ${({ verticalNav }) => (verticalNav ? "black" : "white")};
   z-index: 20000;
   display: flex;
   height: ${({ verticalNav }) => (verticalNav ? "100vh" : "")};
   width: ${({ verticalNav }) => (verticalNav ? "" : "100vw")};
-  transition: transform 600ms;
+  transition: ${({ navOpen, verticalNav }) => {
+      if (verticalNav && !navOpen) return "margin-left 600ms , "
+      if (!verticalNav) return ""
+      if (navOpen) return "margin-left 600ms, "
+      else return "margin-left 600ms, "
+    }}
+    transform 600ms;
   transform: ${({ navOpen }) => (navOpen ? "translateX(25vw)" : "")};
-  background: blue;
   display: flex;
   justify-content: space-between;
   flex-direction: ${({ verticalNav }) => (verticalNav ? "column" : "row")};
 
   .bars {
-    background: blue;
     position: relative;
     img {
-      margin-left: ${({ verticalNav }) => (verticalNav ? "" : "11rem")};
+      margin-left: ${({ verticalNav, navOpen }) => {
+        if (!navOpen && !verticalNav) return "11rem"
+        else return "0"
+      }};
+      transition: ${({ navOpen, verticalNav }) => {
+        if (verticalNav && !navOpen) return ""
+        if (navOpen) return "margin-left 500ms"
+        else return "margin-left 0.3s"
+      }};
       cursor: pointer;
       margin-bottom: 0;
+      z-index: 30000;
     }
   }
 
   .h3 {
     position: ${({ verticalNav }) => (verticalNav ? "block" : "absolute")};
-    width: 100%;
-    text-align: center;
+    font-family: var(--robotoFont);
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    width: ${({ verticalNav }) => (verticalNav ? "auto" : "936px")};
+    margin: ${({ verticalNav }) => (verticalNav ? "" : "0 auto")};
+    left: ${({ verticalNav }) => (verticalNav ? "" : "0")};
+    right: ${({ verticalNav }) => (verticalNav ? "" : "0")};
+    z-index: 2500;
+    text-align: ${({ verticalNav }) => (verticalNav ? "center" : "")};
     align-self: center;
     writing-mode: ${({ verticalNav }) => (verticalNav ? "vertical-rl" : "")};
     text-orientation: ${({ verticalNav }) =>

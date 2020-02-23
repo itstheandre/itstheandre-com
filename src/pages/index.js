@@ -9,7 +9,7 @@ const Page = styled.main`
   /* background-color: red; */
 
   main {
-    padding-top: 15vh;
+    /* padding-top: 15vh; */
   }
 
   header {
@@ -18,10 +18,13 @@ const Page = styled.main`
     position: relative;
     display: flex;
     align-items: center;
+    pointer-events: none;
   }
 
   .fw {
     width: 100vw;
+    pointer-events: none;
+
     height: 100%;
     /* padding-bottom: 50%; */
     background-color: black;
@@ -30,7 +33,7 @@ const Page = styled.main`
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    z-index: -1;
+    z-index: -100;
   }
   /* position: relative; */
 
@@ -78,7 +81,7 @@ const Page3 = () => {
               <Button styleType="primary">Hi there</Button>
             </div>
             <Header color="orange" />
-            <Header color="red" /> */}
+            <Header color="red" />
           </main>
         </Page>
       </Layout>
