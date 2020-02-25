@@ -1,65 +1,23 @@
 import React from "react"
 import Layout from "../components/layout"
 import styled from "styled-components"
-import { Header } from "../styles/S_Layout"
+import { Header, Page } from "../styles/S_Layout"
 import { Button } from "../styles/Buttons"
 import { useWrapper } from "../Context/WrapperContext"
 import SqProject from "../components/Projects/SqProject"
 import { ProjectGrid, ProjectSection } from "../styles/S_Projects"
 import ContactForm from "../components/HomePage/ContactForm"
+import { pic } from "../utils/imageUpload"
 
-const Page = styled.main`
-  width: 100%;
-  /* background-color: red; */
+const obj = {
+  topic: "Topic / Tag",
+  projectName: "Project Name",
+  img: pic,
+  content:
+    "Breve descriçao do projeto. Hopefully curta mas que de para perceber o que é.",
+}
 
-  main {
-    /* padding-top: 15vh; */
-  }
-
-  header {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    pointer-events: none;
-    margin-bottom: 16rem;
-  }
-
-  .fw {
-    width: 100vw;
-    pointer-events: none;
-
-    height: 100%;
-    background-color: black;
-    position: absolute;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    z-index: -100;
-  }
-
-  .sectionText {
-    margin-bottom: 2.4rem;
-  }
-
-  .h1 {
-    margin-bottom: 4rem;
-  }
-
-  .gridded {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 2.4rem;
-    margin-bottom: 17.6rem;
-
-    .body {
-      line-height: 2.4rem;
-    }
-  }
-`
-
+const arrTest = [obj, obj, obj]
 const Index = () => {
   const { ref } = useWrapper()
   return (
@@ -76,8 +34,8 @@ const Index = () => {
 
             <ProjectSection>
               <div className="grid">
-                {[1, 2, 3].map(el => (
-                  <SqProject />
+                {arrTest.map(el => (
+                  <SqProject key={el.topic} info={el} />
                 ))}
               </div>
               <div className="seeAllProjects">

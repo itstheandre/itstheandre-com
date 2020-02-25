@@ -5,6 +5,7 @@ import xBlack from "../images/x-black.svg"
 import twitterLogo from "../images/Twitter.svg"
 import linkedinLogo from "../images/Linkedin.svg"
 import instagramLogo from "../images/Instagram.svg"
+import pic from "../images/Img.png"
 
 export {
   menuBarsWhite,
@@ -14,4 +15,5 @@ export {
   twitterLogo,
   linkedinLogo,
   instagramLogo,
+  pic,
 }

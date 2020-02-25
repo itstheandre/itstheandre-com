@@ -14,7 +14,7 @@ const LayoutBody = styled.main`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.75);
     z-index: 1000;
     display: ${({ navOpen }) => (navOpen ? "block" : "none")};
   }
@@ -29,11 +29,7 @@ const Header = styled.header`
 const Navbar = styled.nav`
   position: fixed;
   top: 4rem;
-  margin-left: ${({ inView, navOpen }) => {
-    if (inView && !navOpen) return "4rem"
-    else if (navOpen) return "0"
-    else return "0"
-  }};
+  margin-left: 4rem;
   font-size: 3rem;
   color: ${({ inView }) => (inView ? "black" : "white")};
   z-index: 20000;
@@ -41,11 +37,11 @@ const Navbar = styled.nav`
   height: ${({ inView }) => (inView ? "100vh" : "")};
   width: ${({ inView }) => (inView ? "" : "100vw")};
   transition: ${({ navOpen, inView }) => {
-      if (inView && !navOpen) return "margin-left 600ms , "
-      if (!inView) return ""
-      if (navOpen) return "margin-left 600ms, "
-      else return "margin-left 600ms, "
-    }}
+    if (inView && !navOpen) return "margin-left 600ms , "
+    if (!inView) return ""
+    if (navOpen) return "margin-left 600ms, "
+    else return "margin-left 600ms, "
+  }}
     transform 600ms;
   transform: ${({ navOpen }) => (navOpen ? "translateX(25vw)" : "")};
   display: flex;
@@ -55,10 +51,10 @@ const Navbar = styled.nav`
   .bars {
     position: relative;
     img {
-      margin-left: ${({ inView, navOpen }) => {
+      /* margin-left: ${({ inView, navOpen }) => {
         if (!navOpen && !inView) return "4rem"
         else return "0"
-      }};
+      }}; */
       transition: ${({ navOpen, inView }) => {
         if (inView && !navOpen) return ""
         if (navOpen) return "margin-left 500ms"
@@ -142,4 +138,51 @@ const Footer = styled.footer`
   }
 `
 
-export { LayoutBody, Header, Navbar, SideNav, BodyContainer, Footer }
+const Page = styled.main`
+  width: 100%;
+
+  header {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    margin-bottom: 16rem;
+  }
+
+  .fw {
+    width: 100vw;
+    pointer-events: none;
+
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    z-index: -100;
+  }
+
+  .sectionText {
+    margin-bottom: 2.4rem;
+  }
+
+  .h1 {
+    margin-bottom: 4rem;
+  }
+
+  .gridded {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2.4rem;
+    margin-bottom: 17.6rem;
+
+    .body {
+      line-height: 2.4rem;
+    }
+  }
+`
+
+export { LayoutBody, Header, Navbar, SideNav, BodyContainer, Footer, Page }

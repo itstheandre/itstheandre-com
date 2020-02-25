@@ -5,7 +5,7 @@ const ProjectSection = styled.section`
 
   .grid {
     margin: 0 0 4.8rem;
-    background: blue;
+    /* background: blue; */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(29.6rem, 1fr));
     grid-gap: 2.4rem;
@@ -19,7 +19,7 @@ const ProjectSection = styled.section`
 
 const ProjectGrid = styled.section`
   margin: 0 0 4.8rem;
-  background: blue;
+  /* background: blue; */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(29.6rem, 1fr));
   grid-gap: 2.4rem;
@@ -32,10 +32,13 @@ const ProjectStyled = styled.div`
   background: url(${({ img }) => img}) no-repeat;
   background-size: cover;
   background-position: center;
-  background-color: green;
+  overflow: hidden;
+
+  /* background-color: green; */
   :hover {
     /* background-color: yellow; */
     .imageOverlay {
+      height: 100%;
       background-color: rgba(0, 0, 0, 0.8);
     }
 
@@ -57,12 +60,12 @@ const ProjectStyled = styled.div`
 
   .imageOverlay {
     position: absolute;
-    top: 0;
-    left: 0;
     bottom: 0;
+    left: 0;
     right: 0;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    height: 0;
+    transition: 0.5s ease;
+    background-color: none;
     pointer-events: none;
   }
 
