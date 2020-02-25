@@ -130,4 +130,16 @@ const BodyContainer = styled.main`
   margin: 0 auto;
 `
 
-export { LayoutBody, Header, Navbar, SideNav, BodyContainer }
+const Footer = styled.footer`
+  display: flex;
+  justify-content: space-between;
+  color: white;
+
+  .icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3.2rem;
+  }
+`
+
+export { LayoutBody, Header, Navbar, SideNav, BodyContainer, Footer }

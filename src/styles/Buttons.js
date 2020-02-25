@@ -8,7 +8,7 @@ const Button = styled.button`
   border: ${({ styleType }) => (styleType === "secondary" ? border : "none")};
   height: 4rem;
   background: ${({ styleType }) =>
-    styleType === "secondary" ? "transparent" : "black"};
+    styleType === "secondary" ? "white" : "black"};
   padding: 0 1.8rem;
   color: ${({ styleType }) => (styleType === "secondary" ? "black" : "white")};
 `

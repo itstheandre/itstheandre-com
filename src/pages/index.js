@@ -6,6 +6,7 @@ import { Button } from "../styles/Buttons"
 import { useWrapper } from "../Context/WrapperContext"
 import SqProject from "../components/Projects/SqProject"
 import { ProjectGrid, ProjectSection } from "../styles/S_Projects"
+import ContactForm from "../components/HomePage/ContactForm"
 
 const Page = styled.main`
   width: 100%;
@@ -30,7 +31,6 @@ const Page = styled.main`
     pointer-events: none;
 
     height: 100%;
-    /* padding-bottom: 50%; */
     background-color: black;
     position: absolute;
     left: 50%;
@@ -84,30 +84,33 @@ const Index = () => {
                 <Button styleType="secondary">See all projects</Button>
               </div>
             </ProjectSection>
-
-            <div className="sectionText">About</div>
-            <div className="h1">
-              I’m a full stack developer with a passion for audio and technology
-            </div>
-            <div className="gridded">
-              <div className="aboutMe">
-                <div className="sectionText">Experience</div>
-                <div className="body">
-                  From Marketing to Sales and now Web Development,  I’m someone
-                  who’s interested in helping companies grow and achieve amazing
-                  things.
-                </div>
+            <div className="aboutMeWrapper">
+              <div className="sectionText">About</div>
+              <div className="h1">
+                I’m a full stack developer with a passion for audio and
+                technology
               </div>
-              <div className="aboutMe">
-                <div className="sectionText">Technologies</div>
-                <div className="body">
-                  From HTML5 to Redux, I’m always making sure I’m learning and
-                  improving the skills I have - always trying to follow the
-                  trends I see or be ahead of them if possible.
+              <div className="gridded">
+                <div className="aboutMe">
+                  <div className="sectionText">Experience</div>
+                  <div className="body">
+                    From Marketing to Sales and now Web Development,  I’m
+                    someone who’s interested in helping companies grow and
+                    achieve amazing things.
+                  </div>
+                </div>
+                <div className="aboutMe">
+                  <div className="sectionText">Technologies</div>
+                  <div className="body">
+                    From HTML5 to Redux, I’m always making sure I’m learning and
+                    improving the skills I have - always trying to follow the
+                    trends I see or be ahead of them if possible.
+                  </div>
                 </div>
               </div>
             </div>
           </main>
+          <ContactForm />
         </Page>
       </Layout>
     </div>
