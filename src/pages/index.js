@@ -4,6 +4,8 @@ import styled from "styled-components"
 import { Header } from "../styles/S_Layout"
 import { Button } from "../styles/Buttons"
 import { useWrapper } from "../Context/WrapperContext"
+import SqProject from "../components/Projects/SqProject"
+import { ProjectGrid, ProjectSection } from "../styles/S_Projects"
 
 const Page = styled.main`
   width: 100%;
@@ -20,6 +22,7 @@ const Page = styled.main`
     display: flex;
     align-items: center;
     pointer-events: none;
+    margin-bottom: 16rem;
   }
 
   .fw {
@@ -70,6 +73,17 @@ const Index = () => {
               </h1>
               <div className="fw" ref={ref}></div>
             </header>
+
+            <ProjectSection>
+              <div className="grid">
+                {[1, 2, 3].map(el => (
+                  <SqProject />
+                ))}
+              </div>
+              <div className="seeAllProjects">
+                <Button styleType="secondary">See all projects</Button>
+              </div>
+            </ProjectSection>
             {/* <Header color="black" /> */}
             <div className="sectionText">Test Test Test</div>
             <div

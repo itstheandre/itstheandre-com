@@ -3,6 +3,7 @@ import styled from "styled-components"
 const border = "2px solid #000000"
 
 const Button = styled.button`
+  cursor: pointer;
   font-size: 1.6rem;
   border: ${({ styleType }) => (styleType === "secondary" ? border : "none")};
   height: 4rem;
