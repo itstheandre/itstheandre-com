@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import styled from "styled-components"
 import { Header } from "../styles/S_Layout"
 import { Button } from "../styles/Buttons"
+import { useWrapper } from "../Context/WrapperContext"
 
 const Page = styled.main`
   width: 100%;
@@ -56,7 +57,8 @@ const Page = styled.main`
   } */
 `
 
-const Page3 = () => {
+const Index = () => {
+  const { ref } = useWrapper()
   return (
     <div>
       <Layout>
@@ -66,7 +68,7 @@ const Page3 = () => {
               <h1 className="heroText">
                 I make your <span>dreams</span>, I mean, ideas come true
               </h1>
-              <div className="fw"></div>
+              <div className="fw" ref={ref}></div>
             </header>
             {/* <Header color="black" /> */}
             <div className="sectionText">Test Test Test</div>
@@ -89,4 +91,4 @@ const Page3 = () => {
   )
 }
 
-export default Page3
+export default Index

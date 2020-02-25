@@ -1,16 +1,15 @@
 import { useEffect, useReducer } from "react"
+import {
+  menuBarsBlack,
+  menuBarsWhite,
+  xBlack,
+  xWhite,
+} from "../utils/imageUpload"
+import { useWrapper } from "../Context/WrapperContext"
+import { useState } from "react"
 
 function layoutReducer(state, action) {
-  let verticalNav
   switch (action.type) {
-    case "SET_VERTICAL":
-      // const verticalNav = true
-      verticalNav = true
-      return { ...state, verticalNav }
-    case "SET_HORIZONTAL":
-      // const verticalNav = true
-      verticalNav = false
-      return { ...state, verticalNav }
     case "SET_OPEN_CLOSE":
       const navOpen = !state.navOpen
       return { ...state, navOpen }
@@ -20,28 +19,48 @@ function layoutReducer(state, action) {
 }
 /* -------------------------------------------------------------------------- */
 
+function rightMenu({ navOpen }, inView) {
+  if (navOpen && inView) {
+    return xBlack
+  } else if (navOpen && !inView) {
+    return xWhite
+  } else if (!navOpen && inView) {
+    return menuBarsBlack
+  } else if (!navOpen && !inView) {
+    return menuBarsWhite
+  }
+}
+
 const initialState = {
   navOpen: false,
-  verticalNav: false,
 }
 
 export function useNav() {
-  const [state, dispatch] = useReducer(layoutReducer, initialState)
+  // const [state, dispatch] = useReducer(layoutReducer, initialState)
 
-  useEffect(() => {
-    function handleScroll() {
-      let yVal = window.scrollY
-      if (yVal < 500) {
-        dispatch({ type: "SET_HORIZONTAL" })
-      } else {
-        dispatch({ type: "SET_VERTICAL" })
-      }
-    }
-    window.addEventListener("scroll", handleScroll)
+  const [navOpen, setNavOpen] = useState(false)
+  function dispatch() {
+    setNavOpen(!navOpen)
+  }
+  function toggleNav() {
+    setNavOpen(!navOpen)
+  }
 
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  const state = { navOpen }
+
+  const { inView } = useWrapper()
+
+  // useEffect(() => {
+  //   console.log("inView changed")
+  //   if (inView) {
+  //     dispatch({ type: "SET_HORIZONTAL" })
+  //   } else {
+  //     dispatch({ type: "SET_VERTICAL" })
+  //   }
+  // }, [inView])
+
+  const menuImage = rightMenu(state, !inView)
 
   // console.log({ state })
-  return { dispatch, state }
+  return { dispatch, state, menuImage, inView, navOpen, toggleNav }
 }

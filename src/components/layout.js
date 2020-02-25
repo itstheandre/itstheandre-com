@@ -4,24 +4,28 @@ import Nav from "./Navigation/Nav"
 import GlobalStyle from "../styles/GlobalStyles"
 import { LayoutBody, BodyContainer } from "../styles/S_Layout"
 import { useNav } from "../lib/useNav"
+import { useWrapper } from "../Context/WrapperContext"
 
 const Layout = ({ children }) => {
-  const { dispatch, state } = useNav()
+  const { menuImage, inView, navOpen, toggleNav } = useNav()
 
   return (
     <>
       <GlobalStyle />
-      <Sidebar navOpen={state.navOpen} />
+      <Sidebar navOpen={navOpen} />
       <Nav
-        verticalNav={state.verticalNav}
-        navOpen={state.navOpen}
-        state={state}
-        dispatch={dispatch}
+        navOpen={navOpen}
+        // state={state}
+        // dispatch={dispatch}
+        menuImage={menuImage}
+        inView={inView}
+        toggleNav={toggleNav}
       />
-      <LayoutBody navOpen={state.navOpen}>
+      <LayoutBody navOpen={navOpen}>
         <div
           className="overlay"
-          onClick={() => dispatch({ type: "SET_OPEN_CLOSE" })}
+          // onClick={() => dispatch({ type: "SET_OPEN_CLOSE" })}
+          onClick={toggleNav}
         ></div>
         <BodyContainer>{children}</BodyContainer>
       </LayoutBody>
@@ -30,24 +34,3 @@ const Layout = ({ children }) => {
 }
 
 export default Layout
-// \
-// {
-/* <div
-          style={{
-            height: "70vh",
-            backgroundColor: "orange",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          {/* <button onClick={() => dispatch({ type: "SET_OPEN_CLOSE" })}>
-          Click me
-        </button> */
-// }
-
-//   <button>Click me</button>
-//   <h1>{state.navOpen.toString()}</h1>
-//   <h2>{state.verticalNav.toString()}</h2>
-// </LayoutBody>
-// <Things />

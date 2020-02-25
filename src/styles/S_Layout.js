@@ -28,21 +28,21 @@ const Header = styled.header`
 
 const Navbar = styled.nav`
   position: fixed;
-  top: 5.5rem;
-  margin-left: ${({ verticalNav, navOpen }) => {
-    if (verticalNav && !navOpen) return "11rem"
+  top: 4rem;
+  margin-left: ${({ inView, navOpen }) => {
+    if (inView && !navOpen) return "4rem"
     else if (navOpen) return "0"
     else return "0"
   }};
   font-size: 3rem;
-  color: ${({ verticalNav }) => (verticalNav ? "black" : "white")};
+  color: ${({ inView }) => (inView ? "black" : "white")};
   z-index: 20000;
   display: flex;
-  height: ${({ verticalNav }) => (verticalNav ? "100vh" : "")};
-  width: ${({ verticalNav }) => (verticalNav ? "" : "100vw")};
-  transition: ${({ navOpen, verticalNav }) => {
-      if (verticalNav && !navOpen) return "margin-left 600ms , "
-      if (!verticalNav) return ""
+  height: ${({ inView }) => (inView ? "100vh" : "")};
+  width: ${({ inView }) => (inView ? "" : "100vw")};
+  transition: ${({ navOpen, inView }) => {
+      if (inView && !navOpen) return "margin-left 600ms , "
+      if (!inView) return ""
       if (navOpen) return "margin-left 600ms, "
       else return "margin-left 600ms, "
     }}
@@ -50,17 +50,17 @@ const Navbar = styled.nav`
   transform: ${({ navOpen }) => (navOpen ? "translateX(25vw)" : "")};
   display: flex;
   justify-content: space-between;
-  flex-direction: ${({ verticalNav }) => (verticalNav ? "column" : "row")};
+  flex-direction: ${({ inView }) => (inView ? "column" : "row")};
 
   .bars {
     position: relative;
     img {
-      margin-left: ${({ verticalNav, navOpen }) => {
-        if (!navOpen && !verticalNav) return "11rem"
+      margin-left: ${({ inView, navOpen }) => {
+        if (!navOpen && !inView) return "4rem"
         else return "0"
       }};
-      transition: ${({ navOpen, verticalNav }) => {
-        if (verticalNav && !navOpen) return ""
+      transition: ${({ navOpen, inView }) => {
+        if (inView && !navOpen) return ""
         if (navOpen) return "margin-left 500ms"
         else return "margin-left 0.3s"
       }};
@@ -71,22 +71,21 @@ const Navbar = styled.nav`
   }
 
   .h3 {
-    position: ${({ verticalNav }) => (verticalNav ? "block" : "absolute")};
+    position: ${({ inView }) => (inView ? "block" : "absolute")};
     font-family: var(--robotoFont);
     letter-spacing: 0.2rem;
     text-transform: uppercase;
-    width: ${({ verticalNav }) => (verticalNav ? "auto" : "936px")};
-    margin: ${({ verticalNav }) => (verticalNav ? "" : "0 auto")};
-    left: ${({ verticalNav }) => (verticalNav ? "" : "0")};
-    right: ${({ verticalNav }) => (verticalNav ? "" : "0")};
+    width: ${({ inView }) => (inView ? "auto" : "936px")};
+    margin: ${({ inView }) => (inView ? "" : "0 auto")};
+    left: ${({ inView }) => (inView ? "" : "0")};
+    right: ${({ inView }) => (inView ? "" : "0")};
     z-index: 2500;
-    text-align: ${({ verticalNav }) => (verticalNav ? "center" : "")};
+    text-align: ${({ inView }) => (inView ? "center" : "")};
     align-self: center;
-    writing-mode: ${({ verticalNav }) => (verticalNav ? "vertical-rl" : "")};
-    text-orientation: ${({ verticalNav }) =>
-      verticalNav ? "sideways-right" : ""};
-    transform: ${({ verticalNav }) => (verticalNav ? "rotate(180deg)" : "")};
-    font-size: 70%;
+    writing-mode: ${({ inView }) => (inView ? "vertical-rl" : "")};
+    text-orientation: ${({ inView }) => (inView ? "sideways-right" : "")};
+    transform: ${({ inView }) => (inView ? "rotate(180deg)" : "")};
+    font-size: 1.4rem;
   }
 `
 
