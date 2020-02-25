@@ -39,25 +39,25 @@ const Page = styled.main`
     margin-right: -50vw;
     z-index: -100;
   }
-  /* position: relative; */
 
-  /* .fwWrapper {
-    position: relative;
-    background-color: orange;
-    height: 100vh;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+  .sectionText {
+    margin-bottom: 2.4rem;
   }
-  .fw {
-    position: absolute;
-    background-color: yellow;
-    height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  } */
+
+  .h1 {
+    margin-bottom: 4rem;
+  }
+
+  .gridded {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2.4rem;
+    margin-bottom: 17.6rem;
+
+    .body {
+      line-height: 2.4rem;
+    }
+  }
 `
 
 const Index = () => {
@@ -84,20 +84,29 @@ const Index = () => {
                 <Button styleType="secondary">See all projects</Button>
               </div>
             </ProjectSection>
-            {/* <Header color="black" /> */}
-            <div className="sectionText">Test Test Test</div>
-            <div
-              style={{
-                margin: "0 auto",
-                width: "100%",
-                height: "20vh",
-                backgroundColor: "blue",
-              }}
-            >
-              <Button styleType="primary">Hi there</Button>
+
+            <div className="sectionText">About</div>
+            <div className="h1">
+              I’m a full stack developer with a passion for audio and technology
             </div>
-            <Header color="orange" />
-            <Header color="red" />
+            <div className="gridded">
+              <div className="aboutMe">
+                <div className="sectionText">Experience</div>
+                <div className="body">
+                  From Marketing to Sales and now Web Development,  I’m someone
+                  who’s interested in helping companies grow and achieve amazing
+                  things.
+                </div>
+              </div>
+              <div className="aboutMe">
+                <div className="sectionText">Technologies</div>
+                <div className="body">
+                  From HTML5 to Redux, I’m always making sure I’m learning and
+                  improving the skills I have - always trying to follow the
+                  trends I see or be ahead of them if possible.
+                </div>
+              </div>
+            </div>
           </main>
         </Page>
       </Layout>

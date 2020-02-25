@@ -54,6 +54,7 @@ h1,h2,h3,h4,h5,h6 {
   }
 
   .h1 {
+     font-family:var(--tt-mono);
      font-weight: bold;
      font-size: 3.6rem;
      line-height: 4.8rem;
