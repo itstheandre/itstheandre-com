@@ -18,6 +18,7 @@ function layoutReducer(state, action) {
       return { ...state }
   }
 }
+/* -------------------------------------------------------------------------- */
 
 const initialState = {
   navOpen: false,
