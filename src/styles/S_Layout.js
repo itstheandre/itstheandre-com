@@ -29,20 +29,35 @@ const Header = styled.header`
 const Navbar = styled.nav`
   position: fixed;
   top: 4rem;
-  margin-left: 4rem;
   font-size: 3rem;
-  color: ${({ inView }) => (inView ? "black" : "white")};
+  color: ${({ inView, footerView }) => {
+    if (footerView) return "white"
+    else if (inView) return "black"
+    else return "white"
+  }};
   z-index: 20000;
   display: flex;
   height: ${({ inView }) => (inView ? "100vh" : "")};
   width: ${({ inView }) => (inView ? "" : "100vw")};
-  transition: ${({ navOpen, inView }) => {
+  /* transition: ${({ navOpen, inView }) => {
     if (inView && !navOpen) return "margin-left 600ms , "
     if (!inView) return ""
     if (navOpen) return "margin-left 600ms, "
     else return "margin-left 600ms, "
-  }}
-    transform 600ms;
+  }}; */
+  transition: ${({ inView, navOpen }) => {
+    if (inView) return "margin-left 600ms"
+    if (navOpen) return "margin-left 600ms"
+    if (!inView) return "margin-left 600ms"
+    if (inView && !navOpen) return "margin-left 600ms"
+    return "margin-left 600ms"
+  }}, transform 600ms, color 0.5s ;
+  /* transition: all 1s; */
+    /* margin-left 600ms transform 600ms color 600ms; */
+    margin-left: ${({ inView, navOpen }) => {
+      if (!inView) return "0"
+      return "4rem"
+    }};
   transform: ${({ navOpen }) => (navOpen ? "translateX(25vw)" : "")};
   display: flex;
   justify-content: space-between;
@@ -51,8 +66,14 @@ const Navbar = styled.nav`
   .bars {
     position: relative;
     img {
+      margin-left: ${({ inView }) => {
+        if (!inView) return "4rem"
+        return "0"
+      }};
+      /* margin-left: 4rem; */
+
       /* margin-left: ${({ inView, navOpen }) => {
-        if (!navOpen && !inView) return "4rem"
+        if (!navOpen && inView) return "4rem"
         else return "0"
       }}; */
       transition: ${({ navOpen, inView }) => {
@@ -71,7 +92,7 @@ const Navbar = styled.nav`
     font-family: var(--robotoFont);
     letter-spacing: 0.2rem;
     text-transform: uppercase;
-    width: ${({ inView }) => (inView ? "auto" : "936px")};
+    width: ${({ inView }) => (inView ? "auto" : "93.6rem")};
     margin: ${({ inView }) => (inView ? "" : "0 auto")};
     left: ${({ inView }) => (inView ? "" : "0")};
     right: ${({ inView }) => (inView ? "" : "0")};

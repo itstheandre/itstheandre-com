@@ -17,7 +17,11 @@ const obj = {
     "Breve descriçao do projeto. Hopefully curta mas que de para perceber o que é.",
 }
 
-const arrTest = [obj, obj, obj]
+const arrTest = [
+  { ...obj, key: "1" },
+  { ...obj, key: 2 },
+  { ...obj, key: 3 },
+]
 const Index = () => {
   const { ref } = useWrapper()
   return (
@@ -35,7 +39,7 @@ const Index = () => {
             <ProjectSection>
               <div className="grid">
                 {arrTest.map(el => (
-                  <SqProject key={el.topic} info={el} />
+                  <SqProject key={el.key} info={el} />
                 ))}
               </div>
               <div className="seeAllProjects">

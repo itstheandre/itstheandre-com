@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Button } from "../../styles/Buttons"
+import { useWrapper } from "../../Context/WrapperContext"
 
 const StyledContactForm = styled.div`
   padding-top: 8rem;
@@ -59,8 +60,9 @@ const StyledContactForm = styled.div`
 `
 
 const ContactForm = () => {
+  const { ref2 } = useWrapper()
   return (
-    <StyledContactForm>
+    <StyledContactForm ref={ref2}>
       <div className="fullWidth"></div>
       <div className="container">
         <div className="letsWork h1">Let's work together</div>

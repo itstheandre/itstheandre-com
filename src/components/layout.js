@@ -10,26 +10,21 @@ import { twitterLogo, instagramLogo, linkedinLogo } from "../utils/imageUpload"
 const logos = [twitterLogo, instagramLogo, linkedinLogo]
 
 const Layout = ({ children }) => {
-  const { menuImage, inView, navOpen, toggleNav } = useNav()
-
+  const { menuImage, inView, navOpen, toggleNav, inView2 } = useNav()
+  console.log({ inView2 })
   return (
     <>
       <GlobalStyle />
       <Sidebar navOpen={navOpen} />
       <Nav
         navOpen={navOpen}
-        // state={state}
-        // dispatch={dispatch}
         menuImage={menuImage}
         inView={inView}
         toggleNav={toggleNav}
+        inView2={inView2}
       />
       <LayoutBody navOpen={navOpen}>
-        <div
-          className="overlay"
-          // onClick={() => dispatch({ type: "SET_OPEN_CLOSE" })}
-          onClick={toggleNav}
-        ></div>
+        <div className="overlay" onClick={toggleNav}></div>
         <BodyContainer>
           {children}
           <Footer>

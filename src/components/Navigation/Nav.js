@@ -1,13 +1,9 @@
 import React from "react"
-import styled from "styled-components"
-import { menuBarsWhite, menuBarsBlack } from "../../utils/imageUpload"
 import { Navbar } from "../../styles/S_Layout"
-import { useNav } from "../../lib/useNav"
-import { useWrapper } from "../../Context/WrapperContext"
 
-const Nav = ({ navOpen, menuImage, inView, toggleNav }) => {
+const Nav = ({ menuImage, inView, inView2, navOpen, toggleNav }) => {
   return (
-    <Navbar navOpen={navOpen} inView={!inView}>
+    <Navbar navOpen={navOpen} inView={!inView} footerView={inView2}>
       <div className="bars">
         <img src={menuImage} alt="menu bars" onClick={toggleNav} />
       </div>

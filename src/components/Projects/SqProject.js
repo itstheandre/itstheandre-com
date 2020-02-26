@@ -4,7 +4,7 @@ import { ProjectStyled } from "../../styles/S_Projects"
 
 const SqProject = ({ info }) => {
   const { topic, projectName, img, content } = info
-  console.log(info)
+  // console.log(info)
   return (
     <ProjectStyled img={img}>
       <div className="imageOverlay"></div>
