@@ -4,7 +4,9 @@ import styled from "styled-components"
 import { ProjectSection } from "../styles/S_Projects"
 import SqProject from "../components/Projects/SqProject"
 import { pic } from "../utils/imageUpload"
-import { useBigPage } from "../Context/WrapperContext"
+import { useNav } from "../lib/useNav"
+import { useEffect } from "react"
+import { useWrapper } from "../Context/WrapperContext"
 
 const ProjectsPage = styled.div`
   padding-top: 5.2rem;
@@ -37,6 +39,14 @@ const arrTest = [
 
 const Projects = () => {
   //   const { pageSize } = useBigPage()
+  const { safeOptionToggle } = useWrapper()
+  useEffect(() => {
+    safeOptionToggle(true)
+    return () => {
+      safeOptionToggle(false)
+    }
+  }, [safeOptionToggle])
+
   return (
     <Layout>
       <ProjectsPage>

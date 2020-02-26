@@ -5,7 +5,7 @@ const LayoutBody = styled.main`
   position: relative;
   transition: transform 600ms;
   transform: ${({ navOpen }) => {
-    return navOpen ? "translateX(25vw) " : ""
+    return navOpen ? "translateX(var(--out)) " : ""
   }};
 
   .overlay {
@@ -53,7 +53,7 @@ const Navbar = styled.nav`
     if (!inView) return "0"
     return "4rem"
   }};
-  transform: ${({ navOpen }) => (navOpen ? "translateX(25vw)" : "")};
+  transform: ${({ navOpen }) => (navOpen ? "translateX(var(--out))" : "")};
   display: flex;
   justify-content: space-between;
   flex-direction: ${({ inView }) => (inView ? "column" : "row")};
@@ -99,7 +99,7 @@ const Navbar = styled.nav`
 const SideNav = styled.aside`
   position: fixed;
   left: 0;
-  width: 25vw;
+  width: var(--out);
   height: 100vh;
   background-color: rgb(0, 0, 0);
   /* background: #020a17; */
@@ -107,7 +107,7 @@ const SideNav = styled.aside`
   z-index: 1500;
   overflow: hidden;
   transition: transform 600ms;
-  transform: ${({ navOpen }) => (navOpen ? "" : "translateX(-25vw)")};
+  transform: ${({ navOpen }) => (navOpen ? "" : "translateX(var(--negative))")};
   display: flex;
   flex-direction: column;
   padding: 4.8rem 4rem;

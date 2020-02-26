@@ -10,7 +10,16 @@ const GlobalStyle = createGlobalStyle`
 html {
   font-size: 10px;
   --robotoFont: ${Roboto};
-  --tt-mono : ${TTMonoBold}
+  --tt-mono : ${TTMonoBold};
+  --out: 25vw;
+  --negative: -25vw;
+
+${"" /* @media (max-width: 2000px) {
+   --out: 50vw;
+  --negative: -50vw;
+} */}
+
+  
 }
 :root {
    font-size: 10px

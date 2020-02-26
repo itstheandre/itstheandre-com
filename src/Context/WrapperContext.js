@@ -15,8 +15,18 @@ export function WrapperProvider({ children }) {
     rootMargin: "-450px",
   })
 
+  const [safeOption, setSafeOption] = useState(undefined)
+
+  function safeOptionToggle(arg) {
+    setSafeOption(arg)
+  }
+
+  console.log({ safeOption })
+
   return (
-    <WrapperContextProvider value={{ ref, inView, footer, footerView }}>
+    <WrapperContextProvider
+      value={{ ref, inView, footer, footerView, safeOption, safeOptionToggle }}
+    >
       <>{children}</>
     </WrapperContextProvider>
   )

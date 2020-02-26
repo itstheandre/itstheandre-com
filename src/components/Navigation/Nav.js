@@ -1,18 +1,33 @@
 import React from "react"
 import { Navbar } from "../../styles/S_Layout"
+import { useNav } from "../../lib/useNav"
+import { useWrapper } from "../../Context/WrapperContext"
+import NavbarComp from "./NavbarComp"
 
 const Nav = ({ menuImage, inView, footerView, navOpen, toggleNav }) => {
+  const { safeOption } = useWrapper()
+  console.log({ safeOption }, "nav")
+  console.log({ inView }, "nav")
   return (
-    <Navbar navOpen={navOpen} inView={!inView} footerView={footerView}>
-      <div className="bars">
-        <img src={menuImage} alt="menu bars" onClick={toggleNav} />
-      </div>
-      <div className="h3">
-        <p style={{ fontFamily: "Roboto" }}>Hey, it's the André here</p>
-      </div>
-      <div className="empty"></div>
-      {/* </div> */}
-    </Navbar>
+    <>
+      {safeOption ? (
+        <NavbarComp
+          navOpen={navOpen}
+          inView={safeOption}
+          footerView={footerView}
+          menuImage={menuImage}
+          toggleNav={toggleNav}
+        />
+      ) : (
+        <NavbarComp
+          navOpen={navOpen}
+          inView={!inView}
+          footerView={footerView}
+          menuImage={menuImage}
+          toggleNav={toggleNav}
+        />
+      )}
+    </>
   )
 }
 
