@@ -9,7 +9,7 @@ const Sidebar = ({ navOpen }) => {
       <ul className="nav-list">
         <li className="nav-item">
           <Link to="/" className="nav-link">
-            Home
+            Homepage
           </Link>
         </li>
         <li className="nav-item">
@@ -22,17 +22,18 @@ const Sidebar = ({ navOpen }) => {
             Projects
           </Link>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <a href="https://www.pioneersshow.com" className="nav-link">
             Podcast
           </a>
-        </li>
-        <li className="nav-item">
+        </li> */}
+        {/* <li className="nav-item">
           <Link to="/contact" className="nav-link">
             Contact
           </Link>
-        </li>
+        </li> */}
       </ul>
+      <div className="icons"></div>
     </SideNav>
   )
 }

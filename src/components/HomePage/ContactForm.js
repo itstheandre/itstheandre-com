@@ -35,7 +35,6 @@ const StyledContactForm = styled.div`
 
   .form {
     padding-right: 8rem;
-    margin-bottom: 8rem;
 
     input {
       width: 100%;
@@ -60,9 +59,9 @@ const StyledContactForm = styled.div`
 `
 
 const ContactForm = () => {
-  const { ref2 } = useWrapper()
+  const { footer } = useWrapper()
   return (
-    <StyledContactForm ref={ref2}>
+    <StyledContactForm ref={footer}>
       <div className="fullWidth"></div>
       <div className="container">
         <div className="letsWork h1">Let's work together</div>

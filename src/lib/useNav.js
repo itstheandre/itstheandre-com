@@ -28,10 +28,10 @@ export function useNav() {
     setNavOpen(!navOpen)
   }
 
-  const { inView, inView2 } = useWrapper()
+  const { inView, footerView } = useWrapper()
 
   const menuImage = rightMenu(navOpen, !inView)
 
   // console.log({ state })
-  return { menuImage, inView, navOpen, toggleNav, inView2 }
+  return { menuImage, inView, navOpen, toggleNav, footerView }
 }

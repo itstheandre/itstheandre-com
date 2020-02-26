@@ -14,6 +14,8 @@ const LayoutBody = styled.main`
     left: 0;
     width: 100%;
     height: 100%;
+    /* height: ${({ bigPage }) => (bigPage ? "100%" : "100vh")}; */
+
     background-color: rgba(0, 0, 0, 0.75);
     z-index: 1000;
     display: ${({ navOpen }) => (navOpen ? "block" : "none")};
@@ -39,25 +41,18 @@ const Navbar = styled.nav`
   display: flex;
   height: ${({ inView }) => (inView ? "100vh" : "")};
   width: ${({ inView }) => (inView ? "" : "100vw")};
-  /* transition: ${({ navOpen, inView }) => {
-    if (inView && !navOpen) return "margin-left 600ms , "
-    if (!inView) return ""
-    if (navOpen) return "margin-left 600ms, "
-    else return "margin-left 600ms, "
-  }}; */
   transition: ${({ inView, navOpen }) => {
-    if (inView) return "margin-left 600ms"
-    if (navOpen) return "margin-left 600ms"
-    if (!inView) return "margin-left 600ms"
-    if (inView && !navOpen) return "margin-left 600ms"
-    return "margin-left 600ms"
-  }}, transform 600ms, color 0.5s ;
-  /* transition: all 1s; */
-    /* margin-left 600ms transform 600ms color 600ms; */
-    margin-left: ${({ inView, navOpen }) => {
-      if (!inView) return "0"
-      return "4rem"
-    }};
+      if (inView) return "margin-left 600ms"
+      if (navOpen) return "margin-left 600ms"
+      if (!inView) return "margin-left 600ms"
+      if (inView && !navOpen) return "margin-left 600ms"
+      return "margin-left 600ms"
+    }},
+    transform 600ms, color 0.5s;
+  margin-left: ${({ inView, navOpen }) => {
+    if (!inView) return "0"
+    return "4rem"
+  }};
   transform: ${({ navOpen }) => (navOpen ? "translateX(25vw)" : "")};
   display: flex;
   justify-content: space-between;
@@ -70,12 +65,7 @@ const Navbar = styled.nav`
         if (!inView) return "4rem"
         return "0"
       }};
-      /* margin-left: 4rem; */
 
-      /* margin-left: ${({ inView, navOpen }) => {
-        if (!navOpen && inView) return "4rem"
-        else return "0"
-      }}; */
       transition: ${({ navOpen, inView }) => {
         if (inView && !navOpen) return ""
         if (navOpen) return "margin-left 500ms"
@@ -111,29 +101,33 @@ const SideNav = styled.aside`
   left: 0;
   width: 25vw;
   height: 100vh;
-  background: #020a17;
+  background-color: rgb(0, 0, 0);
+  /* background: #020a17; */
   padding: 1rem;
   z-index: 1500;
   overflow: hidden;
   transition: transform 600ms;
   transform: ${({ navOpen }) => (navOpen ? "" : "translateX(-25vw)")};
-
+  display: flex;
+  flex-direction: column;
+  padding: 4.8rem 4rem;
   .nav-list {
     list-style: none;
   }
 
   .nav-item {
     position: relative;
-    margin: 1rem 0;
-    padding: 0.5rem 0;
+    margin-bottom: 4.8rem;
+    font-size: 2.8rem;
+    font-family: var(--tt-mono);
+    /* margin: 1rem 0; */
+    /* padding: 4rem 0; */
   }
 
   .nav-link {
     color: white;
-    font-size: 1.4rem;
-    text-transform: uppercase;
     text-decoration: none;
-    letter-spacing: 2px;
+    /* letter-spacing: 2px; */
     transition: color 100ms;
   }
 
@@ -148,14 +142,26 @@ const BodyContainer = styled.main`
 `
 
 const Footer = styled.footer`
-  display: flex;
-  justify-content: space-between;
-  color: white;
+  margin: 8rem auto 0;
+  width: 100vw;
+  background-color: black;
+  .footerWrapper {
+    margin: 0 auto;
+    width: 90vw;
+    max-width: 93.6rem;
+    /* margin-top: 8rem; */
+    height: 12.8rem;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
 
-  .icons {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 3.2rem;
+    .icons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 3.2rem;
+    }
   }
 `
 

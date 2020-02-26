@@ -10,8 +10,8 @@ import { twitterLogo, instagramLogo, linkedinLogo } from "../utils/imageUpload"
 const logos = [twitterLogo, instagramLogo, linkedinLogo]
 
 const Layout = ({ children }) => {
-  const { menuImage, inView, navOpen, toggleNav, inView2 } = useNav()
-  console.log({ inView2 })
+  const { menuImage, inView, navOpen, toggleNav, footerView } = useNav()
+
   return (
     <>
       <GlobalStyle />
@@ -21,13 +21,13 @@ const Layout = ({ children }) => {
         menuImage={menuImage}
         inView={inView}
         toggleNav={toggleNav}
-        inView2={inView2}
+        footerView={footerView}
       />
       <LayoutBody navOpen={navOpen}>
         <div className="overlay" onClick={toggleNav}></div>
-        <BodyContainer>
-          {children}
-          <Footer>
+        <BodyContainer>{children}</BodyContainer>
+        <Footer>
+          <div className="footerWrapper">
             <div className="icons">
               {logos.map(image => (
                 <img src={image} key={image} />
@@ -36,8 +36,8 @@ const Layout = ({ children }) => {
             <div className="copyright">
               © 2020 Catarina Rosa & André de Albuquerque
             </div>
-          </Footer>
-        </BodyContainer>
+          </div>
+        </Footer>
       </LayoutBody>
     </>
   )

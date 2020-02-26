@@ -26,6 +26,7 @@ const ProjectGrid = styled.section`
 `
 
 const ProjectStyled = styled.div`
+  cursor: pointer;
   padding-bottom: 83%;
   background: green;
   position: relative;

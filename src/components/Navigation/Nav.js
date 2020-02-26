@@ -1,9 +1,9 @@
 import React from "react"
 import { Navbar } from "../../styles/S_Layout"
 
-const Nav = ({ menuImage, inView, inView2, navOpen, toggleNav }) => {
+const Nav = ({ menuImage, inView, footerView, navOpen, toggleNav }) => {
   return (
-    <Navbar navOpen={navOpen} inView={!inView} footerView={inView2}>
+    <Navbar navOpen={navOpen} inView={!inView} footerView={footerView}>
       <div className="bars">
         <img src={menuImage} alt="menu bars" onClick={toggleNav} />
       </div>

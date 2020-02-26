@@ -10,18 +10,19 @@ export function WrapperProvider({ children }) {
     rootMargin: "-60px",
   })
 
-  const [ref2, inView2] = useInView({
+  const [footer, footerView] = useInView({
     /* Optional options */
     rootMargin: "-450px",
   })
 
   return (
-    // <WrapperContextProvider value={{ ref, inView, ref2, inView2 }}>
-    <WrapperContextProvider value={{ ref, inView, ref2, inView2 }}>
+    <WrapperContextProvider value={{ ref, inView, footer, footerView }}>
       <>{children}</>
     </WrapperContextProvider>
   )
 }
+
+//
 
 export function useWrapper() {
   return useContext(WrapperContext)

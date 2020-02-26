@@ -3,7 +3,7 @@ import Layout from "../components/layout"
 import styled from "styled-components"
 import { Header, Page } from "../styles/S_Layout"
 import { Button } from "../styles/Buttons"
-import { useWrapper } from "../Context/WrapperContext"
+import { useWrapper, useBigPage } from "../Context/WrapperContext"
 import SqProject from "../components/Projects/SqProject"
 import { ProjectGrid, ProjectSection } from "../styles/S_Projects"
 import ContactForm from "../components/HomePage/ContactForm"
@@ -24,6 +24,7 @@ const arrTest = [
 ]
 const Index = () => {
   const { ref } = useWrapper()
+
   return (
     <div>
       <Layout>
