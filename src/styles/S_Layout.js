@@ -1,19 +1,30 @@
 import styled from "styled-components"
 
+const Spacer = styled.div`
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 100%;
+  min-height: 100vh;
+`
+
 const LayoutBody = styled.main`
   width: 100%;
   position: relative;
+  /* margin-bottom: 9rem; */
   transition: transform 600ms;
   transform: ${({ navOpen }) => {
     return navOpen ? "translateX(var(--out)) " : ""
   }};
+
+ 
 
   .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
+    height: ${({ safeOption }) => (safeOption ? "100vh" : "100%")};
     /* height: ${({ bigPage }) => (bigPage ? "100%" : "100vh")}; */
 
     background-color: rgba(0, 0, 0, 0.75);
@@ -32,10 +43,12 @@ const Navbar = styled.nav`
   position: fixed;
   top: 4rem;
   font-size: 3rem;
-  color: ${({ inView, footerView }) => {
+  color: ${({ inView, footerView, safeOption }) => {
+    console.log(safeOption)
+    if (safeOption) return "black"
     if (footerView) return "white"
-    else if (inView) return "black"
-    else return "white"
+    if (inView) return "black"
+    /* else if (inView) return "black" */ else return "white"
   }};
   z-index: 20000;
   display: flex;
@@ -142,9 +155,12 @@ const BodyContainer = styled.main`
 `
 
 const Footer = styled.footer`
-  margin: 8rem auto 0;
+  margin: 0 auto;
   width: 100vw;
   background-color: black;
+  transition: transform 600ms;
+  transform: ${({ navOpen }) => (navOpen ? "translateX(var(--out))" : "")};
+
   .footerWrapper {
     margin: 0 auto;
     width: 90vw;
@@ -212,4 +228,13 @@ const Page = styled.main`
   }
 `
 
-export { LayoutBody, Header, Navbar, SideNav, BodyContainer, Footer, Page }
+export {
+  LayoutBody,
+  Header,
+  Navbar,
+  SideNav,
+  BodyContainer,
+  Footer,
+  Page,
+  Spacer,
+}

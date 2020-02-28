@@ -6,17 +6,23 @@ import NavbarComp from "./NavbarComp"
 
 const Nav = ({ menuImage, inView, footerView, navOpen, toggleNav }) => {
   const { safeOption } = useWrapper()
-  console.log({ safeOption }, "nav")
-  console.log({ inView }, "nav")
+  // console.log({ safeOption }, "nav")
+  // console.log({ inView }, "nav")
+  // console.log({ inView, safeOption, footerView })
+  console.log(
+    { safeOption: Boolean(safeOption) },
+    { footerView: Boolean(footerView) }
+  )
   return (
     <>
-      {safeOption ? (
+      {safeOption && !footerView ? (
         <NavbarComp
           navOpen={navOpen}
           inView={safeOption}
           footerView={footerView}
           menuImage={menuImage}
           toggleNav={toggleNav}
+          // safeOption={safeOption}
         />
       ) : (
         <NavbarComp
@@ -25,6 +31,7 @@ const Nav = ({ menuImage, inView, footerView, navOpen, toggleNav }) => {
           footerView={footerView}
           menuImage={menuImage}
           toggleNav={toggleNav}
+          safeOption={safeOption}
         />
       )}
     </>

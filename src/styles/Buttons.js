@@ -23,4 +23,17 @@ const Button = styled.button`
   }
 `
 
-export { Button }
+const Tags = styled.div`
+  font-family: var(--tt-reg);
+  font-weight: normal;
+  background-color: #dedede;
+  color: #9a9a9a;
+  text-align: center;
+  padding: 1rem 1.2rem;
+  transition: transform 0.2s;
+  :hover {
+    transform: scale(1.2);
+  }
+`
+
+export { Button, Tags }

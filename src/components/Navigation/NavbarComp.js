@@ -3,9 +3,21 @@ import { Navbar } from "../../styles/S_Layout"
 import { useNav } from "../../lib/useNav"
 import { useWrapper } from "../../Context/WrapperContext"
 
-const NavbarComp = ({ menuImage, inView, footerView, navOpen, toggleNav }) => {
+const NavbarComp = ({
+  menuImage,
+  inView,
+  footerView,
+  navOpen,
+  toggleNav,
+  safeOption,
+}) => {
   return (
-    <Navbar navOpen={navOpen} inView={inView} footerView={footerView}>
+    <Navbar
+      navOpen={navOpen}
+      inView={inView}
+      footerView={footerView}
+      safeOption={safeOption}
+    >
       <div className="bars">
         <img src={menuImage} alt="menu bars" onClick={toggleNav} />
       </div>

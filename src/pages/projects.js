@@ -39,13 +39,16 @@ const arrTest = [
 
 const Projects = () => {
   //   const { pageSize } = useBigPage()
-  const { safeOptionToggle } = useWrapper()
+  const { safeOptionToggle, safeOption } = useWrapper()
+
   useEffect(() => {
     safeOptionToggle(true)
     return () => {
       safeOptionToggle(false)
     }
   }, [safeOptionToggle])
+
+  console.log({ safeOption })
 
   return (
     <Layout>
