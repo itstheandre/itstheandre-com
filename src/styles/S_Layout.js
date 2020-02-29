@@ -175,7 +175,7 @@ const Footer = styled.footer`
 
     .icons {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(${({ logos }) => logos}, 1fr);
       grid-gap: 3.2rem;
     }
   }

@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
           <div className="overlay" onClick={toggleNav}></div>
           <BodyContainer>{children}</BodyContainer>
         </LayoutBody>
-        <Footer navOpen={navOpen}>
+        <Footer navOpen={navOpen} logos={logos.length}>
           <div className="footerWrapper">
             <div className="icons">
               {logos.map(image => (
