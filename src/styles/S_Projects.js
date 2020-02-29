@@ -112,7 +112,6 @@ const ProjectTemplate = styled.div`
   margin-bottom: 8rem;
   .hero {
     height: 100vh;
-    background: blue;
     position: relative;
     width: 100%;
     margin-bottom: 8rem;
@@ -196,6 +195,11 @@ const ProjectTemplate = styled.div`
           font-size: 1.6rem;
           font-family: var(--robotoFont);
         }
+
+        a {
+          color: black;
+          text-decoration: underline;
+        }
       }
       .examples {
         display: grid;
@@ -213,6 +217,11 @@ const ProjectTemplate = styled.div`
           font-weight: bold;
           font-size: 1.6rem;
           font-family: var(--robotoFont);
+        }
+
+        a {
+          color: black;
+          text-decoration: underline;
         }
 
         p {
