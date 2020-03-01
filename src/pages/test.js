@@ -71,7 +71,7 @@ const Project = ({ data }) => {
             <div className="h2">{title}</div>
             <div className="shortDescription">
               <ReactMarkdown source={description} />
-              <a href={link} target="_blank" rel="noopener">
+              <a href={link} target="_blank" rel="noreferrer">
                 <Button>Take me there</Button>
               </a>
               {/* </Link> */}
