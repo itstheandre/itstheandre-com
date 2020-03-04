@@ -17,9 +17,8 @@ export const query = graphql`
         node {
           _id
           # techUsed
-          link
           projectType
-          projectNumber
+          # projectNumber
           shortDescription
           title
           # description
@@ -71,13 +70,14 @@ const Index = ({ data }) => {
   const allProjects = data.allSanityProject.edges
     .slice(0, 3)
     .map(({ node }) => {
+      console.log({ node })
       return {
         topic: node.projectType,
         content: node.shortDescription,
         projectName: node.title,
-        link: node.link,
         img: node.imageTeaser.asset.fluid.src,
         key: node._id,
+        slug: node.slug.current,
       }
     })
 

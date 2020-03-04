@@ -2,7 +2,7 @@ import ReactMarkdown from "react-markdown"
 import React from "react"
 import { Tags } from "../styles/Buttons"
 
-export function fillTemplate({ node }) {
+export function fillTemplate(node) {
   console.log({ node })
   const projectScreenshots = node.projectScreenshots
   const client = node.client

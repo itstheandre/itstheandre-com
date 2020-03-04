@@ -20,6 +20,7 @@ export const query = graphql`
           title
           description
           team {
+            id
             name
             github
           }

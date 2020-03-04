@@ -95,6 +95,7 @@ const Projects = ({ data }) => {
       link: node.link,
       img: node.imageTeaser.asset.fluid.src,
       key: node._id,
+      slug: node.slug.current,
     }
   })
   console.log(allProjects)
