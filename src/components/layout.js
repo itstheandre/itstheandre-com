@@ -5,9 +5,19 @@ import GlobalStyle from "../styles/GlobalStyles"
 import { LayoutBody, BodyContainer, Footer, Spacer } from "../styles/S_Layout"
 import { useNav } from "../lib/useNav"
 import { useWrapper } from "../Context/WrapperContext"
-import { twitterLogo, instagramLogo, linkedinLogo } from "../utils/imageUpload"
+import {
+  twitterLogo,
+  instagramLogo,
+  linkedinLogo,
+  gitHubLogo,
+} from "../utils/imageUpload"
 
-const logos = [twitterLogo, instagramLogo, linkedinLogo]
+const logos = [
+  { image: twitterLogo, link: "https://twitter.com/itstheandre" },
+  { image: instagramLogo, link: "https>//instagram.com/itstheandre_" },
+  { image: linkedinLogo, link: "https://linkedin.com/in/itstheandre" },
+  { image: gitHubLogo, link: "https://github.com/itstheandre" },
+]
 
 const Layout = ({ children }) => {
   const { menuImage, inView, navOpen, toggleNav, footerView } = useNav()
@@ -36,8 +46,10 @@ const Layout = ({ children }) => {
         <Footer navOpen={navOpen} logos={logos.length}>
           <div className="footerWrapper">
             <div className="icons">
-              {logos.map(image => (
-                <img src={image} key={image} />
+              {logos.map(icon => (
+                <a href={icon.link} target="_blank" rel="noopener noreferrer">
+                  <img src={icon.image} key={icon.link} />
+                </a>
               ))}
             </div>
             <div className="copyright">

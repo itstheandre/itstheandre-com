@@ -35,6 +35,13 @@ const ProjectStyled = styled.div`
   background-position: center;
   overflow: hidden;
 
+  .alwaysOverlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
   /* background-color: green; */
   :hover {
     /* background-color: yellow; */
@@ -120,6 +127,8 @@ const ProjectTemplate = styled.div`
       width: 100vw;
       position: absolute;
       background: url(${({ img }) => img}) no-repeat;
+      background-attachment: fixed;
+
       background-size: cover;
       height: 100%;
       left: 50%;
@@ -146,11 +155,22 @@ const ProjectTemplate = styled.div`
       .allTags {
         display: flex;
         flex-wrap: wrap;
+        margin-bottom: 8rem;
+        gap: 1.2rem;
+      }
 
-        div {
-          margin-right: 1.2rem;
-          margin-top: 1.2rem;
-        }
+      .client {
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        letter-spacing: 0.2rem;
+        font-family: var(--robotoFont);
+        margin-bottom: 1.2rem;
+      }
+
+      .clientName {
+        font-size: 1.6rem;
+        font-family: var(--robotoFont);
+        font-weight: regular;
       }
     }
 
@@ -169,6 +189,11 @@ const ProjectTemplate = styled.div`
         font-size: 1.6rem;
         line-height: 2.4rem;
         margin-bottom: 4.8rem;
+
+        a {
+          color: black;
+          border-bottom: 0.5px solid black;
+        }
 
         p {
           margin-bottom: 3rem;
@@ -198,7 +223,7 @@ const ProjectTemplate = styled.div`
 
         a {
           color: black;
-          text-decoration: underline;
+          border-bottom: 0.5px solid black;
         }
       }
       .examples {

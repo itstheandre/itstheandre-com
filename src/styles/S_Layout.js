@@ -141,11 +141,12 @@ const SideNav = styled.aside`
     color: white;
     text-decoration: none;
     /* letter-spacing: 2px; */
-    transition: color 100ms;
+    transition: all 100ms;
   }
 
   .nav-link:hover {
     color: #cdcdcd;
+    text-decoration: line-through;
   }
 `
 
@@ -177,6 +178,10 @@ const Footer = styled.footer`
       display: grid;
       grid-template-columns: repeat(${({ logos }) => logos}, 1fr);
       grid-gap: 3.2rem;
+
+      img {
+        height: 2.4rem;
+      }
     }
   }
 `

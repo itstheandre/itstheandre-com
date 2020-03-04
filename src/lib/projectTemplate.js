@@ -3,8 +3,10 @@ import React from "react"
 import { Tags } from "../styles/Buttons"
 
 export function fillTemplate({ node }) {
+  console.log({ node })
   const projectScreenshots = node.projectScreenshots
-
+  const client = node.client
+  const team = node.team
   const Parsing = node.text.split("---")
 
   const text = Parsing.map(el => {
@@ -27,6 +29,7 @@ export function fillTemplate({ node }) {
 
   const tags = node.techUsed.map(el => <Tags key={el}>{el}</Tags>)
 
+  // const team = node.
   const { projectType, title, description, link } = node
   return {
     projectType,
@@ -37,5 +40,7 @@ export function fillTemplate({ node }) {
     length,
     heroImage,
     tags,
+    client,
+    team,
   }
 }

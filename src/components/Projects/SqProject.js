@@ -7,6 +7,7 @@ const SqProject = ({ info }) => {
   // console.log(info)
   return (
     <ProjectStyled img={img}>
+      <div className="alwaysOverlay"></div>
       <div className="imageOverlay"></div>
 
       <div className="tags">

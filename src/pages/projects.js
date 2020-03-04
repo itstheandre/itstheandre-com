@@ -7,6 +7,49 @@ import { pic } from "../utils/imageUpload"
 import { useNav } from "../lib/useNav"
 import { useEffect } from "react"
 import { useWrapper } from "../Context/WrapperContext"
+import { graphql } from "gatsby"
+
+export const query = graphql`
+  query AllProjectsPage {
+    allSanityProject(sort: { order: DESC, fields: projectNumber }) {
+      edges {
+        node {
+          _id
+          # techUsed
+          link
+          projectType
+          projectNumber
+          shortDescription
+          title
+          # description
+          # team {
+          #   name
+          #   github
+          # }
+          # client
+          slug {
+            current
+          }
+          # projectScreenshots {
+          #   asset {
+          #     fluid {
+          #       src
+          #     }
+          #   }
+          # }
+          # text
+          imageTeaser {
+            asset {
+              fluid {
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 const ProjectsPage = styled.div`
   padding-top: 5.2rem;
@@ -19,6 +62,10 @@ const ProjectsPage = styled.div`
     margin-bottom: 4.8rem;
     font-size: 3rem;
     font-weight: bold;
+  }
+
+  .h1 {
+    margin-bottom: 4.8rem;
   }
 `
 
@@ -37,7 +84,20 @@ const arrTest = [
   { ...obj, key: "4" },
 ]
 
-const Projects = () => {
+const Projects = ({ data }) => {
+  // console.log({ data })
+  // console.log(data.allSanityProject.edges[0].node)
+  const allProjects = data.allSanityProject.edges.map(({ node }) => {
+    return {
+      topic: node.projectType,
+      content: node.shortDescription,
+      projectName: node.title,
+      link: node.link,
+      img: node.imageTeaser.asset.fluid.src,
+      key: node._id,
+    }
+  })
+  console.log(allProjects)
   //   const { pageSize } = useBigPage()
   const { safeOptionToggle, safeOption } = useWrapper()
 
@@ -57,7 +117,7 @@ const Projects = () => {
         <div className="h1">Recent Work</div>
         <ProjectSection>
           <div className="grid">
-            {arrTest.map(el => (
+            {allProjects.map(el => (
               <SqProject key={el.key} info={el} />
             ))}
           </div>

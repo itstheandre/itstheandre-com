@@ -11,6 +11,7 @@ import arrowLeft from "../images/arrow-left.svg"
 import arrowRight from "../images/arrow-right.svg"
 import guard from "../images/guard.png"
 import thief from "../images/thief.png"
+import gitHubLogo from "../images/Github.svg"
 
 export {
   menuBarsWhite,
@@ -26,4 +27,5 @@ export {
   arrowRight,
   guard,
   thief,
+  gitHubLogo,
 }

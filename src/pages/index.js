@@ -8,6 +8,49 @@ import SqProject from "../components/Projects/SqProject"
 import { ProjectGrid, ProjectSection } from "../styles/S_Projects"
 import ContactForm from "../components/HomePage/ContactForm"
 import { pic } from "../utils/imageUpload"
+import { graphql } from "gatsby"
+
+export const query = graphql`
+  query INDEX_PAGE {
+    allSanityProject(sort: { order: DESC, fields: projectNumber }) {
+      edges {
+        node {
+          _id
+          # techUsed
+          link
+          projectType
+          projectNumber
+          shortDescription
+          title
+          # description
+          # team {
+          #   name
+          #   github
+          # }
+          # client
+          slug {
+            current
+          }
+          # projectScreenshots {
+          #   asset {
+          #     fluid {
+          #       src
+          #     }
+          #   }
+          # }
+          # text
+          imageTeaser {
+            asset {
+              fluid {
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 const obj = {
   topic: "Topic / Tag",
@@ -22,8 +65,21 @@ const arrTest = [
   { ...obj, key: 2 },
   { ...obj, key: 3 },
 ]
-const Index = () => {
+const Index = ({ data }) => {
   const { ref } = useWrapper()
+
+  const allProjects = data.allSanityProject.edges
+    .slice(0, 3)
+    .map(({ node }) => {
+      return {
+        topic: node.projectType,
+        content: node.shortDescription,
+        projectName: node.title,
+        link: node.link,
+        img: node.imageTeaser.asset.fluid.src,
+        key: node._id,
+      }
+    })
 
   return (
     <div>
@@ -39,7 +95,7 @@ const Index = () => {
 
             <ProjectSection>
               <div className="grid">
-                {arrTest.map(el => (
+                {allProjects.map(el => (
                   <SqProject key={el.key} info={el} />
                 ))}
               </div>

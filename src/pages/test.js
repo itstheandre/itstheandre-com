@@ -19,6 +19,11 @@ export const query = graphql`
           shortDescription
           title
           description
+          team {
+            name
+            github
+          }
+          client
           slug {
             current
           }
@@ -44,6 +49,7 @@ export const query = graphql`
 `
 
 const Project = ({ data }) => {
+  console.log(data.allSanityProject.edges[1])
   const {
     projectType,
     title,
@@ -53,8 +59,10 @@ const Project = ({ data }) => {
     length,
     heroImage,
     tags,
-  } = fillTemplate(data.allSanityProject.edges[0])
-
+    client,
+    team,
+  } = fillTemplate(data.allSanityProject.edges[2])
+  console.log({ client })
   return (
     <Layout>
       <ProjectTemplate img={heroImage} length={length}>
@@ -65,13 +73,17 @@ const Project = ({ data }) => {
           <div className="tags">
             <div className="sectionText">Technologies</div>
             <div className="allTags">{tags}</div>
+            <div className="client">
+              {client === "Ironhack" ? <>Project</> : <>Client</>}
+            </div>
+            <div className="clientName">{client}</div>
           </div>
           <div className="description">
             <div className="sectionText">{projectType}</div>
             <div className="h2">{title}</div>
             <div className="shortDescription">
               <ReactMarkdown source={description} />
-              <a href={link} target="_blank" rel="noreferrer">
+              <a href={link} target="_blank" rel="noopener noreferrer">
                 <Button>Take me there</Button>
               </a>
               {/* </Link> */}
