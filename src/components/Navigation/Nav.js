@@ -5,36 +5,28 @@ import { useWrapper } from "../../Context/WrapperContext"
 import NavbarComp from "./NavbarComp"
 
 const Nav = ({ menuImage, inView, footerView, navOpen, toggleNav }) => {
-  const { safeOption } = useWrapper()
+  const { safeOption, textView } = useWrapper()
   // console.log({ safeOption }, "nav")
   // console.log({ inView }, "nav")
   // console.log({ inView, safeOption, footerView })
-  console.log(
-    { safeOption: Boolean(safeOption) },
-    { footerView: Boolean(footerView) }
-  )
+
   return (
-    <>
-      {safeOption && !footerView ? (
-        <NavbarComp
-          navOpen={navOpen}
-          inView={safeOption}
-          footerView={footerView}
-          menuImage={menuImage}
-          toggleNav={toggleNav}
-          // safeOption={safeOption}
-        />
-      ) : (
-        <NavbarComp
-          navOpen={navOpen}
-          inView={!inView}
-          footerView={footerView}
-          menuImage={menuImage}
-          toggleNav={toggleNav}
-          safeOption={safeOption}
-        />
-      )}
-    </>
+    <Navbar
+      navOpen={navOpen}
+      inView={inView}
+      footerView={footerView}
+      safeOption={safeOption}
+      textView={textView}
+    >
+      <div className="bars">
+        <img src={menuImage} alt="menu bars" onClick={toggleNav} />
+      </div>
+      <div className="h3">
+        <p style={{ fontFamily: "Roboto" }}>Hey, it's the André here</p>
+      </div>
+      <div className="empty"></div>
+      {/* </div> */}
+    </Navbar>
   )
 }
 

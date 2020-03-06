@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const ProjectSection = styled.section`
-  /* margin-bottom: 16rem; */
+  margin-bottom: 16rem;
 
   .grid {
     margin: 0 0 4.8rem;
@@ -126,7 +126,7 @@ const ProjectTemplate = styled.div`
     .fw {
       width: 100vw;
       position: absolute;
-      background: url(${({ img }) => img}) no-repeat;
+      /* background: url(${({ img }) => img}) no-repeat; */
       background-attachment: fixed;
 
       background-size: cover;
@@ -233,8 +233,10 @@ const ProjectTemplate = styled.div`
         margin: 4.8rem 0;
         grid-gap: 1rem;
         width: 100%;
+        /* min-height: 15rem; */
         img {
           width: 100%;
+          /* height: auto; */
         }
       }
       .thanks {
@@ -259,11 +261,26 @@ const ProjectTemplate = styled.div`
     }
   }
 
-  .anotherDiv {
+  .prevNext {
     width: 100%;
-    display: grid;
-    grid-template-columns: auto auto 1fr auto auto;
-    grid-gap: 3.2rem;
+    /* display: grid; */
+    /* grid-template-columns: auto auto 1fr auto auto; */
+    /* grid-gap: 3.2rem; */
+    /* display: flex; */
+    display: ${({ after, previous }) => {
+      if (previous && after) return "grid"
+      else return "flex"
+    }};
+    grid-template-columns: ${({ after, previous }) => {
+      if (previous && after) return "auto auto 1fr auto auto"
+      else return ""
+    }};
+    gap: 3.2rem;
+    justify-content: ${({ previous, after }) => {
+      if (previous && after) return ""
+      else if (previous && !after) return "start"
+      else if (!previous && after) return "end"
+    }};
 
     .directions {
       align-self: center;

@@ -1,11 +1,13 @@
 import styled from "styled-components"
 
-const border = "2px solid #000000"
+const blackBorder = "2px solid #000000"
+const whiteBorder = "2px solid #fff"
 
 const Button = styled.button`
   cursor: pointer;
   font-size: 1.6rem;
-  border: ${({ styleType }) => (styleType === "secondary" ? border : "none")};
+  border: ${({ styleType }) =>
+    styleType === "secondary" ? blackBorder : whiteBorder};
   height: 4rem;
   background: ${({ styleType }) =>
     styleType === "secondary" ? "white" : "black"};
@@ -15,7 +17,7 @@ const Button = styled.button`
 
   :hover {
     border: ${({ styleType }) =>
-      !styleType === "secondary" ? border : "none"};
+      !styleType === "secondary" ? blackBorder : whiteBorder};
     background: ${({ styleType }) =>
       !styleType === "secondary" ? "white" : "black"};
     color: ${({ styleType }) =>

@@ -32,7 +32,7 @@ export function useNav() {
   }
 
   const { inView, footerView, safeOption } = useWrapper()
-  console.log(safeOption)
+  // console.log(safeOption)
   // console.log({ inView, footerView })
 
   const menuImage = rightMenu(navOpen, safeOption, !inView)

@@ -1,14 +1,17 @@
-import React from "react"
+import React, { useEffect } from "react"
 // import { graphql } from "gatsby"
 // import ReactMarkdown from "react-markdown"
 import styled from "styled-components"
 import { graphql, Link } from "gatsby"
+import Img from "gatsby-image"
 import { fillTemplate } from "../../lib/projectTemplate"
 import Layout from "../layout"
 import { ProjectTemplate } from "../../styles/S_Projects"
 import ReactMarkdown from "react-markdown"
 import { Button } from "../../styles/Buttons"
 import { arrowLeft, arrowRight } from "../../utils/imageUpload"
+import { useWrapper } from "../../Context/WrapperContext"
+import BgImg from "gatsby-background-image"
 
 // export const query = graphql`
 //   query($slug: String) {
@@ -35,10 +38,12 @@ export const query = graphql`
           }
         }
       }
+      heroBG
       imageTeaser {
         asset {
           fluid {
             src
+            ...GatsbySanityImageFluid
           }
         }
       }
@@ -60,10 +65,21 @@ export const query = graphql`
         asset {
           fluid {
             src
+            ...GatsbySanityImageFluid
           }
         }
       }
     }
+    projectImages: sanityProject(slug: { current: { eq: $slug } }) {
+      projectScreenshots {
+        asset {
+          fluid {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+    }
+
     previous: sanityProject(projectNumber: { eq: $previous }) {
       slug {
         current
@@ -77,54 +93,51 @@ export const query = graphql`
   }
 `
 
-const PostBody = styled.div`
-  .test {
-    width: 80vw;
-
-    img {
-      height: 100%;
-      border: 10px solid black;
-    }
-    h2 {
-      color: green;
-    }
-    p {
-      color: red;
-    }
-    .Test3 {
-      background: yellow;
-    }
-  }
-`
-
 // const Project = ({ data }) => {
 const Project = ({ data }) => {
   const after = data?.after?.slug?.current
   const previous = data?.previous?.slug?.current
-  console.log({ after })
-  console.log({ previous })
-  console.log({ data })
+
+  // console.log({ data })
   const {
     projectType,
     title,
     description,
     link,
-    text,
     length,
     heroImage,
     tags,
     client,
     team,
+    Parsing,
+    projectImages,
+    heroBackground,
+
+    // projectScreenshotsArr,
   } = fillTemplate(data.sanityProject)
 
-  // console.log(data)
-  // const postContent = data.sanityPost.body2
+  const projectText = Parsing.map(el => {
+    if (el.includes("#")) return <ReactMarkdown source={el} key={el} />
+    else {
+      return (
+        <div className="examples" key={el}>
+          {projectImages.map(el => el)}
+        </div>
+      )
+    }
+  })
 
   return (
     <Layout>
-      <ProjectTemplate img={heroImage} length={length}>
+      <ProjectTemplate
+        // img={heroImage}
+        length={length}
+        after={after}
+        previous={previous}
+      >
         <div className="hero">
-          <div className="fw" />
+          {/* <div className="fw" /> */}
+          {heroBackground}
         </div>
         <div className="content">
           <div className="tags">
@@ -144,11 +157,12 @@ const Project = ({ data }) => {
                 <Button>Take me there</Button>
               </a>
               {/* </Link> */}
-              <div className="text">{text.map(el => el)}</div>
+              <div className="text">{projectText.map(el => el)}</div>
             </div>
           </div>
         </div>
-        <div className="anotherDiv">
+
+        <div className="prevNext">
           {previous ? (
             <>
               <div className="arrow">

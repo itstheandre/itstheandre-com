@@ -10,13 +10,17 @@ const NavbarComp = ({
   navOpen,
   toggleNav,
   safeOption,
+  hello,
+  textView,
 }) => {
+  console.log(hello)
   return (
     <Navbar
       navOpen={navOpen}
       inView={inView}
       footerView={footerView}
       safeOption={safeOption}
+      textView={textView}
     >
       <div className="bars">
         <img src={menuImage} alt="menu bars" onClick={toggleNav} />

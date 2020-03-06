@@ -1,31 +1,49 @@
-import ReactMarkdown from "react-markdown"
 import React from "react"
 import { Tags } from "../styles/Buttons"
+import { useEffect } from "react"
+import { useWrapper } from "../Context/WrapperContext"
+import Img from "gatsby-image"
+import BgImg from "gatsby-background-image"
+
+export function useSafe() {
+  const { safeOptionToggle } = useWrapper()
+
+  useEffect(() => {
+    safeOptionToggle(true)
+    return () => {
+      safeOptionToggle(false)
+    }
+  }, [safeOptionToggle])
+}
 
 export function fillTemplate(node) {
-  console.log({ node })
-  const projectScreenshots = node.projectScreenshots
+  // console.log({ node })
+
+  const projectImages = node.projectScreenshots.map(({ asset }) =>
+    asset.fluid.src.includes("gif") ? (
+      <img src={asset.fluid.src} key={asset.fluid.src} />
+    ) : (
+      <Img fluid={asset.fluid} key={asset.fluid.src} />
+    )
+  )
+  const projectScreenshotsArr = node.projectScreenshots
   const client = node.client
   const team = node.team
   const Parsing = node.text.split("---")
+  // console.log(heroImage)
 
-  const text = Parsing.map(el => {
-    if (el.includes("#")) {
-      return <ReactMarkdown source={el} key={el} />
-    } else {
-      return (
-        <div className="examples" key={el}>
-          {projectScreenshots.map(image => (
-            <img src={image.asset.fluid.src} key={image.asset.id} />
-          ))}
-        </div>
-      )
-    }
-  })
+  const heroImage = node.heroImage.asset.fluid
 
-  const heroImage = node.heroImage.asset.fluid.src
+  const heroBackground = (
+    <BgImg
+      fluid={heroImage}
+      Tag="div"
+      className="fw"
+      backgroundColor={node.heroBG}
+    />
+  )
 
-  const length = projectScreenshots.length > 1 ? 2 : 1
+  const length = projectScreenshotsArr.length > 1 ? 2 : 1
 
   const tags = node.techUsed.map(el => <Tags key={el}>{el}</Tags>)
 
@@ -36,11 +54,14 @@ export function fillTemplate(node) {
     title,
     description,
     link,
-    text,
     length,
     heroImage,
     tags,
     client,
     team,
+    Parsing,
+    projectScreenshotsArr,
+    projectImages,
+    heroBackground,
   }
 }

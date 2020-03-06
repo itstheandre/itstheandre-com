@@ -28,8 +28,7 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyle />
       <Sidebar navOpen={navOpen} />
-      {/* <Spacer>
-        <div> */}
+
       <Nav
         navOpen={navOpen}
         menuImage={menuImage}
@@ -47,7 +46,12 @@ const Layout = ({ children }) => {
           <div className="footerWrapper">
             <div className="icons">
               {logos.map(icon => (
-                <a href={icon.link} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={icon.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  key={icon.link}
+                >
                   <img src={icon.image} key={icon.link} />
                 </a>
               ))}

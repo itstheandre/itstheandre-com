@@ -5,7 +5,6 @@ import { Link } from "gatsby"
 
 const SqProject = ({ info }) => {
   const { topic, projectName, img, content, slug } = info
-  console.log(slug)
   return (
     <Link to={`/projects/${slug}`}>
       <ProjectStyled img={img}>

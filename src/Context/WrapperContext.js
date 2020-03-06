@@ -5,10 +5,13 @@ export const WrapperContext = createContext()
 const WrapperContextProvider = WrapperContext.Provider
 
 export function WrapperProvider({ children }) {
+  const val = "-400px"
   const [ref, inView] = useInView({
     /* Optional options */
-    rootMargin: "-60px",
+    rootMargin: `-60px`,
   })
+
+  const [textChange, textView] = useInView({ rootMargin: `${val}` })
 
   const [footer, footerView] = useInView({
     /* Optional options */
@@ -21,11 +24,20 @@ export function WrapperProvider({ children }) {
     setSafeOption(arg)
   }
 
-  console.log({ safeOption, footerView })
+  // console.log({ safeOption, footerView })
 
   return (
     <WrapperContextProvider
-      value={{ ref, inView, footer, footerView, safeOption, safeOptionToggle }}
+      value={{
+        ref,
+        inView,
+        footer,
+        footerView,
+        safeOption,
+        safeOptionToggle,
+        textChange,
+        textView,
+      }}
     >
       <>{children}</>
     </WrapperContextProvider>

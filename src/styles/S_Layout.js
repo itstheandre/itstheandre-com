@@ -38,22 +38,37 @@ const Header = styled.header`
   width: 100%;
   background-color: ${({ color }) => color};
 `
-
+// /* color: ${({ inView, footerView, safeOption, textView }) => {
+//     /* if (!textView) return `black`
+//     if (textView === true && inView === true) return `white`
+//     if (textView) return `black`
+//     else if (textView === false && footerView === false) return `black`
+//     /* else if (!textView && !footerView) return `black`
+//     else if (safeOption)
+//       return "black"
+//     else if (footerView) return "white"
+//     else if (inView) return "black"
+//     else return "white"
+//   }}; */
 const Navbar = styled.nav`
   position: fixed;
   top: 4rem;
   font-size: 3rem;
-  color: ${({ inView, footerView, safeOption }) => {
-    console.log(safeOption)
-    if (safeOption) return "black"
-    if (footerView) return "white"
-    if (inView) return "black"
-    /* else if (inView) return "black" */ else return "white"
+
+  color: white;
+  color: ${({ inView, textView, footerView, safeOption }) => {
+    /* console.log({ textView, safeOption, footerView, inView }) */
+    if (safeOption) return `black`
+    if (footerView) return `white`
+    if (!textView) return `black`
+    if (!inView) return "white"
+    if (!textView) return `black`
+    else return "black"
   }};
   z-index: 20000;
   display: flex;
-  height: ${({ inView }) => (inView ? "100vh" : "")};
-  width: ${({ inView }) => (inView ? "" : "100vw")};
+  height: 100vh;
+
   transition: ${({ inView, navOpen }) => {
       if (inView) return "margin-left 600ms"
       if (navOpen) return "margin-left 600ms"
@@ -62,22 +77,15 @@ const Navbar = styled.nav`
       return "margin-left 600ms"
     }},
     transform 600ms, color 0.5s;
-  margin-left: ${({ inView, navOpen }) => {
-    if (!inView) return "0"
-    return "4rem"
-  }};
   transform: ${({ navOpen }) => (navOpen ? "translateX(var(--out))" : "")};
   display: flex;
   justify-content: space-between;
-  flex-direction: ${({ inView }) => (inView ? "column" : "row")};
+  flex-direction: column;
 
   .bars {
     position: relative;
     img {
-      margin-left: ${({ inView }) => {
-        if (!inView) return "4rem"
-        return "0"
-      }};
+      margin-left: 4rem;
 
       transition: ${({ navOpen, inView }) => {
         if (inView && !navOpen) return ""
@@ -91,20 +99,18 @@ const Navbar = styled.nav`
   }
 
   .h3 {
-    position: ${({ inView }) => (inView ? "block" : "absolute")};
+    display: block;
     font-family: var(--robotoFont);
     letter-spacing: 0.2rem;
     text-transform: uppercase;
-    width: ${({ inView }) => (inView ? "auto" : "93.6rem")};
-    margin: ${({ inView }) => (inView ? "" : "0 auto")};
-    left: ${({ inView }) => (inView ? "" : "0")};
-    right: ${({ inView }) => (inView ? "" : "0")};
+    width: auto;
     z-index: 2500;
-    text-align: ${({ inView }) => (inView ? "center" : "")};
     align-self: center;
-    writing-mode: ${({ inView }) => (inView ? "vertical-rl" : "")};
-    text-orientation: ${({ inView }) => (inView ? "sideways-right" : "")};
-    transform: ${({ inView }) => (inView ? "rotate(180deg)" : "")};
+    margin-left: 4rem;
+    text-align: center;
+    writing-mode: vertical-rl;
+    text-orientation: "sideways-right";
+    transform: rotate(180deg);
     font-size: 1.4rem;
   }
 `
@@ -187,6 +193,8 @@ const Footer = styled.footer`
 `
 
 const Page = styled.main`
+  /* padding-top: 5.2rem; */
+
   width: 100%;
 
   header {
@@ -197,6 +205,18 @@ const Page = styled.main`
     align-items: center;
     pointer-events: none;
     margin-bottom: 16rem;
+  }
+
+  .fwWrapper {
+    /* background: blue; */
+    position: relative;
+    display: flex;
+
+    .sectionText {
+      position: absolute;
+      color: white;
+      top: 5.2rem;
+    }
   }
 
   .fw {

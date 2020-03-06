@@ -7,7 +7,8 @@
 // You can delete this file if you're not using it
 const path = require("path")
 
-exports.createPages = async ({ actions, graphql }) => {
+async function createProjects({ actions, graphql }) {
+  const projectTemplate = path.resolve("./src/components/template/project.jsx")
   const result = await graphql(`
     query CREATE_PAGES {
       allSanityProject {
@@ -22,9 +23,7 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `)
-
   const allProjects = result.data.allSanityProject.edges.map(({ node }) => node)
-
   allProjects.forEach(project => {
     console.log("LOOOOOOK    ", { project: project.projectNumber })
     const previous = (Number(project.projectNumber) - 1).toString()
@@ -32,7 +31,7 @@ exports.createPages = async ({ actions, graphql }) => {
     console.log(previous)
     actions.createPage({
       path: `/projects/${project.slug.current}`,
-      component: path.resolve("./src/components/template/project.jsx"),
+      component: projectTemplate,
       context: {
         slug: project.slug.current,
         previous,
@@ -42,29 +41,6 @@ exports.createPages = async ({ actions, graphql }) => {
   })
 }
 
-// const postQuery = await graphql(`
-//   query {
-//     allSanityPost {
-//       edges {
-//         node {
-//           title
-//           slug {
-//             current
-//           }
-//         }
-//       }
-//     }
-//   }
-// `)
-
-// const posts = postQuery.data.allSanityPost.edges.map(({ node }) => node)
-// posts.forEach(episode => {
-//   actions.createPage({
-//     path: `projects/${episode.slug.current}`,
-//     component: path.resolve("./src/components/template/project.jsx"),
-//     context: {
-//       slug: episode.slug.current,
-//       title: episode.title,
-//     },
-//   })
-// })
+exports.createPages = async ({ actions, graphql }) => {
+  await Promise.all([createProjects({ actions, graphql })])
+}

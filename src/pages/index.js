@@ -65,12 +65,11 @@ const arrTest = [
   { ...obj, key: 3 },
 ]
 const Index = ({ data }) => {
-  const { ref } = useWrapper()
+  const { ref, textChange } = useWrapper()
 
   const allProjects = data.allSanityProject.edges
     .slice(0, 3)
     .map(({ node }) => {
-      console.log({ node })
       return {
         topic: node.projectType,
         content: node.shortDescription,
@@ -86,7 +85,8 @@ const Index = ({ data }) => {
       <Layout>
         <Page>
           <main>
-            <header className="fwWrapper">
+            <header className="fwWrapper" ref={textChange}>
+              <div className="sectionText">Hey! Its the andre here</div>
               <h1 className="heroText">
                 I make your <span>dreams</span>, I mean, ideas come true
               </h1>

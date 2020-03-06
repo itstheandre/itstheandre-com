@@ -7,47 +7,47 @@ import { graphql, Link } from "gatsby"
 import ReactMarkdown from "react-markdown"
 import { fillTemplate } from "../lib/projectTemplate"
 
-export const query = graphql`
-  query AllProjects {
-    allSanityProject {
-      edges {
-        node {
-          techUsed
-          link
-          projectType
-          projectNumber
-          shortDescription
-          title
-          description
-          team {
-            id
-            name
-            github
-          }
-          client
-          slug {
-            current
-          }
-          projectScreenshots {
-            asset {
-              fluid {
-                src
-              }
-            }
-          }
-          text
-          heroImage {
-            asset {
-              fluid {
-                src
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query AllProjects {
+//     allSanityProject {
+//       edges {
+//         node {
+//           techUsed
+//           link
+//           projectType
+//           projectNumber
+//           shortDescription
+//           title
+//           description
+//           team {
+//             id
+//             name
+//             github
+//           }
+//           client
+//           slug {
+//             current
+//           }
+//           projectScreenshots {
+//             asset {
+//               fluid {
+//                 src
+//               }
+//             }
+//           }
+//           text
+//           heroImage {
+//             asset {
+//               fluid {
+//                 src
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
 
 const Project = ({ data }) => {
   console.log(data.allSanityProject.edges[1])
