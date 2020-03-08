@@ -24,8 +24,6 @@ export function WrapperProvider({ children }) {
     setSafeOption(arg)
   }
 
-  // console.log({ safeOption, footerView })
-
   return (
     <WrapperContextProvider
       value={{

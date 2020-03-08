@@ -40,10 +40,7 @@ import SEO from "../components/seo"
 // `
 
 const IndexPage = () => {
-  // const IndexPage = ({ data }) => {
-  // console.log(data)
   return (
-    // <Layout>
     <>
       <SEO title="Home" />
       <h1 style={{ fontFamily: "'Roboto', sans-serif" }}>Hi people</h1>
@@ -54,7 +51,6 @@ const IndexPage = () => {
       </div>
       <Link to="/page-2/">Go to page 2</Link>
     </>
-    // </Layout>
   )
 }
 

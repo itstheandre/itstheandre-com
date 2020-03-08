@@ -1,13 +1,11 @@
 import React from "react"
 import Layout from "../components/layout"
-import styled from "styled-components"
-import { Header, Page } from "../styles/S_Layout"
+import { Page } from "../styles/S_Layout"
 import { Button } from "../styles/Buttons"
 import { useWrapper } from "../Context/WrapperContext"
 import SqProject from "../components/Projects/SqProject"
-import { ProjectGrid, ProjectSection } from "../styles/S_Projects"
+import { ProjectSection } from "../styles/S_Projects"
 import ContactForm from "../components/HomePage/ContactForm"
-import { pic } from "../utils/imageUpload"
 import { graphql, Link } from "gatsby"
 
 export const query = graphql`
@@ -51,19 +49,19 @@ export const query = graphql`
   }
 `
 
-const obj = {
-  topic: "Topic / Tag",
-  projectName: "Project Name",
-  img: pic,
-  content:
-    "Breve descriçao do projeto. Hopefully curta mas que de para perceber o que é.",
-}
+// const obj = {
+//   topic: "Topic / Tag",
+//   projectName: "Project Name",
+//   img: pic,
+//   content:
+//     "Breve descriçao do projeto. Hopefully curta mas que de para perceber o que é.",
+// }
 
-const arrTest = [
-  { ...obj, key: "1" },
-  { ...obj, key: 2 },
-  { ...obj, key: 3 },
-]
+// const arrTest = [
+//   { ...obj, key: "1" },
+//   { ...obj, key: 2 },
+//   { ...obj, key: 3 },
+// ]
 const Index = ({ data }) => {
   const { ref, textChange } = useWrapper()
 
@@ -79,7 +77,6 @@ const Index = ({ data }) => {
         slug: node.slug.current,
       }
     })
-  console.log(allProjects)
   return (
     <div>
       <Layout>

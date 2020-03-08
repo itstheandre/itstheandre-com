@@ -1,14 +1,10 @@
 import React from "react"
 import { Navbar } from "../../styles/S_Layout"
-import { useNav } from "../../lib/useNav"
+// import { useNav } from "../../lib/useNav"
 import { useWrapper } from "../../Context/WrapperContext"
-import NavbarComp from "./NavbarComp"
 
 const Nav = ({ menuImage, inView, footerView, navOpen, toggleNav }) => {
   const { safeOption, textView } = useWrapper()
-  // console.log({ safeOption }, "nav")
-  // console.log({ inView }, "nav")
-  // console.log({ inView, safeOption, footerView })
 
   return (
     <Navbar

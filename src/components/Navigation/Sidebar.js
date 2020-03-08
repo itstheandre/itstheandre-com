@@ -3,7 +3,6 @@ import { Link } from "gatsby"
 import { SideNav } from "../../styles/S_Layout"
 
 const Sidebar = ({ navOpen }) => {
-  // console.log(navOpen)
   return (
     <SideNav navOpen={navOpen} className="sidebar">
       <ul className="nav-list">

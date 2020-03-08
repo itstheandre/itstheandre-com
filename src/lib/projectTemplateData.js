@@ -17,20 +17,26 @@ export function useSafe() {
 }
 
 export function fillTemplate(node) {
-  // console.log({ node })
-
+  console.log(node.title)
   const projectImages = node.projectScreenshots.map(({ asset }) =>
     asset.fluid.src.includes("gif") ? (
-      <img src={asset.fluid.src} key={asset.fluid.src} />
+      <img
+        src={asset.fluid.src}
+        key={asset.fluid.src}
+        alt={`${node.title}'s Project Sreenshot`}
+      />
     ) : (
-      <Img fluid={asset.fluid} key={asset.fluid.src} />
+      <Img
+        fluid={asset.fluid}
+        key={asset.fluid.src}
+        alt={`${node.title}'s Project Sreenshot`}
+      />
     )
   )
   const projectScreenshotsArr = node.projectScreenshots
   const client = node.client
   const team = node.team
   const Parsing = node.text.split("---")
-  // console.log(heroImage)
 
   const heroImage = node.heroImage.asset.fluid
 

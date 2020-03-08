@@ -50,7 +50,6 @@ import { fillTemplate } from "../lib/projectTemplate"
 // `
 
 const Project = ({ data }) => {
-  console.log(data.allSanityProject.edges[1])
   const {
     projectType,
     title,
@@ -63,7 +62,6 @@ const Project = ({ data }) => {
     client,
     team,
   } = fillTemplate(data.allSanityProject.edges[2])
-  console.log({ client })
   return (
     <Layout>
       <ProjectTemplate img={heroImage} length={length}>

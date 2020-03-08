@@ -6,7 +6,6 @@ import {
 } from "../utils/imageUpload"
 import { useWrapper } from "../Context/WrapperContext"
 import { useState } from "react"
-import { useEffect } from "react"
 
 /* -------------------------------------------------------------------------- */
 
@@ -32,12 +31,9 @@ export function useNav() {
   }
 
   const { inView, footerView, safeOption } = useWrapper()
-  // console.log(safeOption)
-  // console.log({ inView, footerView })
 
   const menuImage = rightMenu(navOpen, safeOption, !inView)
 
-  // console.log({ state })
   return {
     menuImage,
     inView,

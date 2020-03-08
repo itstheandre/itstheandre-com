@@ -1,10 +1,9 @@
 import React from "react"
 import Layout from "../components/layout"
 import styled from "styled-components"
-import { ProjectSection, ProjectPageSection } from "../styles/S_Projects"
+import { ProjectPageSection } from "../styles/S_Projects"
 import SqProject from "../components/Projects/SqProject"
-import { pic } from "../utils/imageUpload"
-import { useNav } from "../lib/useNav"
+
 import { useEffect } from "react"
 import { useWrapper } from "../Context/WrapperContext"
 import { graphql } from "gatsby"
@@ -69,24 +68,22 @@ const ProjectsPage = styled.div`
   }
 `
 
-const obj = {
-  topic: "Topic / Tag",
-  projectName: "Project Name",
-  img: pic,
-  content:
-    "Breve descriçao do projeto. Hopefully curta mas que de para perceber o que é.",
-}
+// const obj = {
+//   topic: "Topic / Tag",
+//   projectName: "Project Name",
+//   img: pic,
+//   content:
+//     "Breve descriçao do projeto. Hopefully curta mas que de para perceber o que é.",
+// }
 
-const arrTest = [
-  { ...obj, key: "1" },
-  { ...obj, key: "2" },
-  { ...obj, key: "3" },
-  { ...obj, key: "4" },
-]
+// const arrTest = [
+//   { ...obj, key: "1" },
+//   { ...obj, key: "2" },
+//   { ...obj, key: "3" },
+//   { ...obj, key: "4" },
+// ]
 
 const Projects = ({ data }) => {
-  // console.log({ data })
-  // console.log(data.allSanityProject.edges[0].node)
   const allProjects = data.allSanityProject.edges.map(({ node }) => {
     return {
       topic: node.projectType,
@@ -98,9 +95,8 @@ const Projects = ({ data }) => {
       slug: node.slug.current,
     }
   })
-  console.log(allProjects)
   //   const { pageSize } = useBigPage()
-  const { safeOptionToggle, safeOption } = useWrapper()
+  const { safeOptionToggle } = useWrapper()
 
   useEffect(() => {
     safeOptionToggle(true)
@@ -108,8 +104,6 @@ const Projects = ({ data }) => {
       safeOptionToggle(false)
     }
   }, [safeOptionToggle])
-
-  console.log({ safeOption })
 
   return (
     <Layout>

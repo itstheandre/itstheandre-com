@@ -180,7 +180,6 @@ const Page3 = () => {
 
   useEffect(() => {
     const toBeSelected = s => document.querySelector(s)
-    console.log("test")
 
     window.addEventListener("scroll", handleScroll)
 
@@ -193,7 +192,6 @@ const Page3 = () => {
   }, [])
 
   function handleScroll() {
-    console.log(scrollVal)
     let yVal = window.scrollY
     if (yVal < 500) {
       setScrollVal(false)
@@ -202,8 +200,6 @@ const Page3 = () => {
     }
   }
 
-  // console.log(scrollVal, test)
-  console.log({ test })
   return (
     <>
       <GlobalStyle />

@@ -38,18 +38,7 @@ const Header = styled.header`
   width: 100%;
   background-color: ${({ color }) => color};
 `
-// /* color: ${({ inView, footerView, safeOption, textView }) => {
-//     /* if (!textView) return `black`
-//     if (textView === true && inView === true) return `white`
-//     if (textView) return `black`
-//     else if (textView === false && footerView === false) return `black`
-//     /* else if (!textView && !footerView) return `black`
-//     else if (safeOption)
-//       return "black"
-//     else if (footerView) return "white"
-//     else if (inView) return "black"
-//     else return "white"
-//   }}; */
+
 const Navbar = styled.nav`
   position: fixed;
   top: 4rem;
@@ -57,7 +46,6 @@ const Navbar = styled.nav`
 
   color: white;
   color: ${({ inView, textView, footerView, safeOption }) => {
-    /* console.log({ textView, safeOption, footerView, inView }) */
     if (safeOption) return `black`
     if (footerView) return `white`
     if (!textView) return `black`

@@ -27,10 +27,8 @@ async function createProjects({ actions, graphql }) {
   `)
   const allProjects = result.data.allSanityProject.edges.map(({ node }) => node)
   allProjects.forEach(project => {
-    console.log("LOOOOOOK    ", { project: project.projectNumber })
     const previous = (Number(project.projectNumber) - 1).toString()
     const after = (Number(project.projectNumber) + 1).toString()
-    console.log(previous)
     actions.createPage({
       path: `/projects/${project.slug.current}`,
       component: projectTemplate,

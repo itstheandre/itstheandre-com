@@ -1,29 +1,13 @@
-import React, { useEffect } from "react"
-// import { graphql } from "gatsby"
-// import ReactMarkdown from "react-markdown"
-import styled from "styled-components"
+import React from "react"
+// import styled from "styled-components"
 import { graphql, Link } from "gatsby"
-import Img from "gatsby-image"
-import { fillTemplate } from "../../lib/projectTemplate"
+// import Img from "gatsby-image"
+import { fillTemplate } from "../../lib/projectTemplateData"
 import Layout from "../layout"
 import { ProjectTemplate } from "../../styles/S_Projects"
 import ReactMarkdown from "react-markdown"
 import { Button } from "../../styles/Buttons"
 import { arrowLeft, arrowRight } from "../../utils/imageUpload"
-import { useWrapper } from "../../Context/WrapperContext"
-import BgImg from "gatsby-background-image"
-
-// export const query = graphql`
-//   query($slug: String) {
-//     sanityPost(slug: { current: { eq: $slug } }) {
-//       title
-//       slug {
-//         current
-//       }
-//       body2
-//     }
-//   }
-// `
 
 export const query = graphql`
   query($slug: String, $previous: String, $after: String) {
@@ -98,17 +82,16 @@ const Project = ({ data }) => {
   const after = data?.after?.slug?.current
   const previous = data?.previous?.slug?.current
 
-  // console.log({ data })
   const {
     projectType,
     title,
     description,
     link,
     length,
-    heroImage,
+    // heroImage,
     tags,
     client,
-    team,
+    // team,
     Parsing,
     projectImages,
     heroBackground,
