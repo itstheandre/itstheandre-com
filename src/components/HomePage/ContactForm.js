@@ -8,6 +8,9 @@ const StyledContactForm = styled.div`
   padding-top: 8rem;
   position: relative;
   color: white;
+  @media (max-width: 936px) {
+    margin-bottom: 8rem;
+  }
 
   .fullWidth {
     width: 100vw;
@@ -28,14 +31,30 @@ const StyledContactForm = styled.div`
     padding-top: 9rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-
+    @media (max-width: 936px) {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+    @media (max-width: 600px) {
+      width: 35rem;
+    }
     .letsWork {
       padding-left: 8rem;
+      @media (max-width: 936px) {
+        padding-left: 0;
+        width: 40%;
+      }
+      @media (max-width: 600px) {
+        width: 80%;
+      }
     }
   }
 
   .form {
     padding-right: 8rem;
+    @media (max-width: 936px) {
+      padding: 0;
+    }
 
     input {
       width: 100%;

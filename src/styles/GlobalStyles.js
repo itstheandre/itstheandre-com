@@ -14,6 +14,8 @@ html {
   --tt-reg: ${TTMonoReg};
   --out: 25vw;
   --negative: -25vw;
+  --desktop: 936px;
+  --tablet: 600px
 
 ${"" /* @media (max-width: 2000px) {
    --out: 50vw;
@@ -50,6 +52,14 @@ h1,h2,h3,h4,h5,h6 {
      font-family: var(--tt-mono);
      font-weight:bold;
      color: white;
+     
+     @media (max-width: 936px) {
+        font-size: 6.4rem;
+     }
+
+     @media (max-width: 600px) {
+        font-size: 5.8rem;
+     }
 
      span {
         text-decoration:line-through

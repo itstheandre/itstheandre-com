@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import styled from "styled-components"
-import { ProjectSection } from "../styles/S_Projects"
+import { ProjectSection, ProjectPageSection } from "../styles/S_Projects"
 import SqProject from "../components/Projects/SqProject"
 import { pic } from "../utils/imageUpload"
 import { useNav } from "../lib/useNav"
@@ -116,13 +116,13 @@ const Projects = ({ data }) => {
       <ProjectsPage>
         <div className="sectionText">Projects</div>
         <div className="h1">Recent Work</div>
-        <ProjectSection>
+        <ProjectPageSection>
           <div className="grid">
             {allProjects.map(el => (
               <SqProject key={el.key} info={el} />
             ))}
           </div>
-        </ProjectSection>
+        </ProjectPageSection>
       </ProjectsPage>
     </Layout>
   )

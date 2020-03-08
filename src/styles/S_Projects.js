@@ -1,14 +1,28 @@
 import styled from "styled-components"
 
-const ProjectSection = styled.section`
+const ProjectPageSection = styled.section`
   margin-bottom: 16rem;
-
+  @media (max-width: 936px) {
+    margin-bottom: 8rem;
+  }
   .grid {
     margin: 0 0 4.8rem;
     /* background: blue; */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(29.6rem, 1fr));
+
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
     grid-gap: 2.4rem;
+    @media (min-width: 1480px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 936px) {
+      grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+      grid-gap: 1.6rem;
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .seeAllProjects {
@@ -17,6 +31,18 @@ const ProjectSection = styled.section`
   }
 `
 
+const ProjectSection = styled(ProjectPageSection)`
+  @media (max-width: 936px) {
+    margin-bottom: 16rem;
+  }
+  .grid {
+    a {
+      &:nth-last-child(-n + 2) {
+        display: none;
+      }
+    }
+  }
+`
 const ProjectGrid = styled.section`
   margin: 0 0 4.8rem;
   /* background: blue; */
@@ -295,4 +321,10 @@ const ProjectTemplate = styled.div`
   }
 `
 
-export { ProjectGrid, ProjectStyled, ProjectSection, ProjectTemplate }
+export {
+  ProjectGrid,
+  ProjectStyled,
+  ProjectSection,
+  ProjectTemplate,
+  ProjectPageSection,
+}

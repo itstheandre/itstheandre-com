@@ -112,6 +112,9 @@ const Navbar = styled.nav`
     text-orientation: "sideways-right";
     transform: rotate(180deg);
     font-size: 1.4rem;
+    @media (max-width: 936px) {
+      display: none;
+    }
   }
 `
 
@@ -158,7 +161,16 @@ const SideNav = styled.aside`
 
 const BodyContainer = styled.main`
   width: 93.6rem;
+  /* width: 90vw; */
   margin: 0 auto;
+  @media (max-width: 93.6rem) {
+    /* width: 50vw; */
+    max-width: 60rem;
+  }
+
+  @media (max-width: 600px) {
+    width: 35rem;
+  }
 `
 
 const Footer = styled.footer`
@@ -175,18 +187,42 @@ const Footer = styled.footer`
     /* margin-top: 8rem; */
     height: 12.8rem;
     background-color: black;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto auto;
     align-items: center;
+    justify-content: space-between;
     color: white;
+    @media (max-width: 936px) {
+      max-width: 60rem;
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      max-width: 35rem;
+    }
 
     .icons {
       display: grid;
-      grid-template-columns: repeat(${({ logos }) => logos}, 1fr);
+      width: 100%;
+      grid-template-columns: repeat(${({ logos }) => logos}, auto);
       grid-gap: 3.2rem;
+      justify-content: space-between;
+      @media (max-width: 600px) {
+        /* grid-gap: 2.4rem; */
+        grid-template-columns: repeat(4, auto);
+      }
 
       img {
         height: 2.4rem;
+      }
+    }
+    .copyright {
+      @media (max-width: 600px) {
+        text-align: center;
+        width: 50%;
+        margin: 0 auto;
+        line-height: 2.5rem;
+        font-weight: normal;
       }
     }
   }
@@ -205,6 +241,12 @@ const Page = styled.main`
     align-items: center;
     pointer-events: none;
     margin-bottom: 16rem;
+    /* flex-direction: column; */
+    @media (max-width: 936px) {
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+    }
   }
 
   .fwWrapper {
@@ -212,10 +254,19 @@ const Page = styled.main`
     position: relative;
     display: flex;
 
+    h1 {
+      @media (max-width: 936px) {
+        line-height: 120%;
+      }
+    }
+
     .sectionText {
       position: absolute;
       color: white;
       top: 5.2rem;
+      @media (max-width: 936px) {
+        position: static;
+      }
     }
   }
 
@@ -246,6 +297,10 @@ const Page = styled.main`
     grid-template-columns: 1fr 1fr;
     grid-gap: 2.4rem;
     margin-bottom: 17.6rem;
+
+    @media (max-width: 936px) {
+      grid-template-columns: 1fr;
+    }
 
     .body {
       line-height: 2.4rem;

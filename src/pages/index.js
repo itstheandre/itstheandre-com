@@ -8,7 +8,7 @@ import SqProject from "../components/Projects/SqProject"
 import { ProjectGrid, ProjectSection } from "../styles/S_Projects"
 import ContactForm from "../components/HomePage/ContactForm"
 import { pic } from "../utils/imageUpload"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 export const query = graphql`
   query INDEX_PAGE {
@@ -68,7 +68,7 @@ const Index = ({ data }) => {
   const { ref, textChange } = useWrapper()
 
   const allProjects = data.allSanityProject.edges
-    .slice(0, 3)
+    .slice(0, 4)
     .map(({ node }) => {
       return {
         topic: node.projectType,
@@ -100,7 +100,9 @@ const Index = ({ data }) => {
                 ))}
               </div>
               <div className="seeAllProjects">
-                <Button styleType="secondary">See all projects</Button>
+                <Link to="/projects">
+                  <Button styleType="secondary">See all projects</Button>
+                </Link>
               </div>
             </ProjectSection>
             <div className="aboutMeWrapper">
