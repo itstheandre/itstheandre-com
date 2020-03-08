@@ -8,7 +8,9 @@
 const path = require("path")
 
 async function createProjects({ actions, graphql }) {
-  const projectTemplate = path.resolve("./src/components/template/project.jsx")
+  const projectTemplate = path.resolve(
+    "./src/components/template/projectTemplate.jsx"
+  )
   const result = await graphql(`
     query CREATE_PAGES {
       allSanityProject {
