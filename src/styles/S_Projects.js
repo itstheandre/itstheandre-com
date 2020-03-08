@@ -183,6 +183,7 @@ const ProjectTemplate = styled.div`
         flex-wrap: wrap;
         margin-bottom: 8rem;
         gap: 1.2rem;
+        grid-gap: 1.2rem;
       }
 
       .client {

@@ -79,7 +79,7 @@ const Index = ({ data }) => {
         slug: node.slug.current,
       }
     })
-
+  console.log(allProjects)
   return (
     <div>
       <Layout>
