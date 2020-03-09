@@ -164,7 +164,6 @@ const ProjectTemplate = styled.div`
     .fw {
       width: 100vw;
       position: absolute;
-      /* background: url(${({ img }) => img}) no-repeat; */
       background-attachment: fixed;
 
       background-size: cover;
@@ -186,13 +185,13 @@ const ProjectTemplate = styled.div`
 
     @media (max-width: 936px) {
       grid-template-columns: 1fr;
-      grid-template-areas: 'content'
-      'tags';
+      grid-template-areas:
+        "content"
+        "tags";
       margin: 0 4rem 16rem;
     }
     @media (max-width: 600px) {
-      margin:0 0 8rem;
-
+      margin: 0 0 8rem;
     }
 
     .tags {
@@ -238,10 +237,9 @@ const ProjectTemplate = styled.div`
       .teamMembers {
         font-size: 1.6rem;
         line-height: 3.2rem;
-         a {
+        a {
           border-bottom: 0.5px solid black;
-
-         }
+        }
       }
     }
 
@@ -255,7 +253,6 @@ const ProjectTemplate = styled.div`
       .h2 {
         margin-bottom: 4.8rem;
         font-family: var(--tt-mono);
-        font-weight: 
       }
 
       .shortDescription {
@@ -322,7 +319,6 @@ const ProjectTemplate = styled.div`
         a {
           color: black;
           border-bottom: 0.5px solid black;
-
         }
 
         p {
@@ -356,11 +352,10 @@ const ProjectTemplate = styled.div`
       else if (!previous && after) return "end"
     }};
 
-    @media (max-width: 600px){
+    @media (max-width: 600px) {
       display: flex;
-      grid-template-columns:'';
+      grid-template-columns: "";
       justify-content: space-between;
-
     }
 
     .directions {
@@ -368,8 +363,8 @@ const ProjectTemplate = styled.div`
       cursor: pointer;
       font-size: 2.8rem;
       font-family: var(--tt-mono);
-      @media (max-width:600px) {
-        display: none
+      @media (max-width: 600px) {
+        display: none;
       }
     }
 
