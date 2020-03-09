@@ -8,6 +8,7 @@ import { ProjectTemplate } from "../../styles/S_Projects"
 import ReactMarkdown from "react-markdown"
 import { Button } from "../../styles/Buttons"
 import { arrowLeft, arrowRight } from "../../utils/imageUpload"
+import { useDisplay } from "../../lib/displaySize"
 
 export const query = graphql`
   query($slug: String, $previous: String, $after: String) {
@@ -82,6 +83,8 @@ const Project = ({ data }) => {
   const after = data?.after?.slug?.current
   const previous = data?.previous?.slug?.current
 
+  const { display } = useDisplay()
+
   const {
     projectType,
     title,
@@ -91,13 +94,14 @@ const Project = ({ data }) => {
     // heroImage,
     tags,
     client,
-    // team,
+    team,
     Parsing,
     projectImages,
     heroBackground,
-
+    imageInfo,
+    teamValid,
     // projectScreenshotsArr,
-  } = fillTemplate(data.sanityProject)
+  } = fillTemplate(data.sanityProject, display)
 
   const projectText = Parsing.map(el => {
     if (el.includes("#")) return <ReactMarkdown source={el} key={el} />
@@ -130,6 +134,26 @@ const Project = ({ data }) => {
               {client === "Ironhack" ? <>Project</> : <>Client</>}
             </div>
             <div className="clientName">{client}</div>
+            {teamValid && (
+              <>
+                <div className="team client">Team</div>
+                <div className="teamMembers">
+                  {team.map(el => (
+                    <>
+                      <a
+                        href={el.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {el.name}
+                      </a>
+                      <br />
+                    </>
+                  ))}
+                </div>
+              </>
+            )}
+            {/* <div className="team">Team</div> */}
           </div>
           <div className="description">
             <div className="sectionText">{projectType}</div>

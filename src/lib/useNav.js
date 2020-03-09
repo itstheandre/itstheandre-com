@@ -10,6 +10,7 @@ import { useState } from "react"
 /* -------------------------------------------------------------------------- */
 
 function rightMenu(navOpen, safeOption, inView) {
+  if (navOpen && window.innerWidth < 600) return xWhite
   if (!navOpen && safeOption) return menuBarsBlack
   else if (navOpen && safeOption) return xBlack
   else if (navOpen && inView) {

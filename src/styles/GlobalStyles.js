@@ -15,14 +15,14 @@ html {
   --out: 25vw;
   --negative: -25vw;
   --desktop: 936px;
-  --tablet: 600px
+  --tablet: 600px;
+  --outTablet: 50vw;
+  --negativeTablet: -50vw;
+  --outPhone: 100vw;
+  --negativePhone: -100vw;
 
-${"" /* @media (max-width: 2000px) {
-   --out: 50vw;
-  --negative: -50vw;
-} */}
-
-  
+ 
+ 
 }
 :root {
    font-size: 10px
@@ -80,6 +80,10 @@ h1,h2,h3,h4,h5,h6 {
      font-weight: bold;
      font-size: 3.6rem;
      line-height: 4.8rem;
+
+     @media (max-width: 600px){
+        font-size: 2.6rem;
+     }
   }
 
   .h2 {

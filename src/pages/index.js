@@ -66,7 +66,7 @@ const Index = ({ data }) => {
   const { ref, textChange } = useWrapper()
 
   const allProjects = data.allSanityProject.edges
-    .slice(0, 4)
+    .slice(0, 3)
     .map(({ node }) => {
       return {
         topic: node.projectType,
@@ -77,6 +77,9 @@ const Index = ({ data }) => {
         slug: node.slug.current,
       }
     })
+
+  const length = allProjects.length
+  console.log({ length })
   return (
     <div>
       <Layout>
@@ -90,7 +93,7 @@ const Index = ({ data }) => {
               <div className="fw" ref={ref}></div>
             </header>
 
-            <ProjectSection>
+            <ProjectSection length={length}>
               <div className="grid">
                 {allProjects.map(el => (
                   <SqProject key={el.key} info={el} />

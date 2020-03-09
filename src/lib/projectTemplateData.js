@@ -16,8 +16,33 @@ export function useSafe() {
   }, [safeOptionToggle])
 }
 
-export function fillTemplate(node) {
-  console.log(node.title)
+function imageData(display) {
+  switch (display) {
+    case "desktop":
+      return "this is desktop"
+    // break
+    case "tablet":
+      return "this is tablet"
+    // break
+    case "mobile":
+      return "this is mobile"
+    // break
+
+    default:
+      return
+  }
+}
+
+function teamCheck(team) {
+  const findMe = team.find(el => el.name === "André")
+  if (team.length === 0 || (findMe && team.length === 1)) {
+    return false
+  }
+  return true
+}
+
+export function fillTemplate(node, display) {
+  // console.log(node.title)
   const projectImages = node.projectScreenshots.map(({ asset }) =>
     asset.fluid.src.includes("gif") ? (
       <img
@@ -40,6 +65,8 @@ export function fillTemplate(node) {
 
   const heroImage = node.heroImage.asset.fluid
 
+  const imageInfo = imageData(display)
+
   const heroBackground = (
     <BgImg
       fluid={heroImage}
@@ -48,6 +75,9 @@ export function fillTemplate(node) {
       backgroundColor={node.heroBG}
     />
   )
+
+  const teamValid = teamCheck(team)
+  // console.log({ teamValid })
 
   const length = projectScreenshotsArr.length > 1 ? 2 : 1
 
@@ -69,5 +99,7 @@ export function fillTemplate(node) {
     projectScreenshotsArr,
     projectImages,
     heroBackground,
+    imageInfo,
+    teamValid,
   }
 }

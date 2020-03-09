@@ -13,7 +13,8 @@ const ProjectPageSection = styled.section`
     grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
     grid-gap: 2.4rem;
     @media (min-width: 1480px) {
-      grid-template-columns: repeat(2, 1fr);
+      /* grid-template-columns: repeat(2, 1fr); */
+      grid-template-columns: repeat(auto-fit, minmax(29.6, 1fr));
     }
     @media (max-width: 936px) {
       grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
@@ -34,14 +35,25 @@ const ProjectPageSection = styled.section`
 const ProjectSection = styled(ProjectPageSection)`
   @media (max-width: 936px) {
     margin-bottom: 16rem;
+
+    .grid {
+      a {
+        :last-child {
+          display: none;
+        }
+        /* &:nth-last-child(-n + 2) {
+          display: none;
+        } */
+      }
+    }
   }
-  .grid {
+  /* .grid {
     a {
       &:nth-last-child(-n + 2) {
         display: none;
       }
     }
-  }
+  } */
 `
 const ProjectGrid = styled.section`
   margin: 0 0 4.8rem;
@@ -165,11 +177,23 @@ const ProjectTemplate = styled.div`
   }
 
   .content {
-    margin: 0 8rem 16rem;
+    /* margin: 0 8rem 16rem; */
+    margin: 0 0 16rem;
     display: grid;
-    grid-template-columns: 53.6rem 1fr;
+    grid-template-columns: 3fr 1fr;
     grid-template-areas: "content tags";
-    grid-gap: 2.4rem;
+    grid-gap: 3.4rem;
+
+    @media (max-width: 936px) {
+      grid-template-columns: 1fr;
+      grid-template-areas: 'content'
+      'tags';
+      margin: 0 4rem 16rem;
+    }
+    @media (max-width: 600px) {
+      margin:0 0 8rem;
+
+    }
 
     .tags {
       grid-area: tags;
@@ -184,6 +208,9 @@ const ProjectTemplate = styled.div`
         margin-bottom: 8rem;
         gap: 1.2rem;
         grid-gap: 1.2rem;
+        @media (max-width: 936px) {
+          margin-bottom: 4.8rem;
+        }
       }
 
       .client {
@@ -198,6 +225,23 @@ const ProjectTemplate = styled.div`
         font-size: 1.6rem;
         font-family: var(--robotoFont);
         font-weight: regular;
+        margin-bottom: 8rem;
+        @media (max-width: 936px) {
+          margin-bottom: 4.8rem;
+        }
+      }
+
+      .team {
+        margin-bottom: 2.4rem;
+      }
+
+      .teamMembers {
+        font-size: 1.6rem;
+        line-height: 3.2rem;
+         a {
+          border-bottom: 0.5px solid black;
+
+         }
       }
     }
 
@@ -210,6 +254,8 @@ const ProjectTemplate = styled.div`
 
       .h2 {
         margin-bottom: 4.8rem;
+        font-family: var(--tt-mono);
+        font-weight: 
       }
 
       .shortDescription {
@@ -275,7 +321,8 @@ const ProjectTemplate = styled.div`
 
         a {
           color: black;
-          text-decoration: underline;
+          border-bottom: 0.5px solid black;
+
         }
 
         p {
@@ -309,11 +356,21 @@ const ProjectTemplate = styled.div`
       else if (!previous && after) return "end"
     }};
 
+    @media (max-width: 600px){
+      display: flex;
+      grid-template-columns:'';
+      justify-content: space-between;
+
+    }
+
     .directions {
       align-self: center;
       cursor: pointer;
       font-size: 2.8rem;
       font-family: var(--tt-mono);
+      @media (max-width:600px) {
+        display: none
+      }
     }
 
     .arrow {

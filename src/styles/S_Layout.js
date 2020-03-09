@@ -16,6 +16,17 @@ const LayoutBody = styled.main`
     return navOpen ? "translateX(var(--out)) " : ""
   }};
 
+  @media (max-width: 936px) {
+    transform: ${({ navOpen }) =>
+      navOpen ? "translateX(var(--outTablet))" : ""}
+  }
+  @media (max-width: 600px) {
+    transition: filter 0.2ms;
+     /* transform: ${({ navOpen }) => (navOpen ? "" : "")} ; */
+     transform: translateX(0);
+    filter: ${({ navOpen }) => (navOpen ? "blur(4px)" : "")};
+  }
+
  
 
   .overlay {
@@ -30,6 +41,10 @@ const LayoutBody = styled.main`
     background-color: rgba(0, 0, 0, 0.75);
     z-index: 1000;
     display: ${({ navOpen }) => (navOpen ? "block" : "none")};
+
+    @media (max-width: 600px) {
+      display: none;
+    }
   }
 `
 
@@ -69,12 +84,20 @@ const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  @media (max-width: 936px) {
+    transform: ${({ navOpen }) =>
+      navOpen ? "translateX(var(--outTablet))" : ""};
+  }
+  @media (max-width: 600px) {
+    z-index: 100000;
+  }
 
   .bars {
     position: relative;
-    img {
-      margin-left: 4rem;
+    margin-left: 4rem;
+    height: auto;
 
+    img {
       transition: ${({ navOpen, inView }) => {
         if (inView && !navOpen) return ""
         if (navOpen) return "margin-left 500ms"
@@ -83,6 +106,16 @@ const Navbar = styled.nav`
       cursor: pointer;
       margin-bottom: 0;
       z-index: 30000;
+    }
+    @media (max-width: 600px) {
+      /* margin-left: 2rem; */
+      margin-left: ${({ navOpen }) => (navOpen ? "" : "2rem")};
+      img {
+        /* height: 2.4rem; */
+        height: ${({ navOpen }) => (navOpen ? "5rem" : "2.4rem")};
+        width: ${({ navOpen }) => (navOpen ? "5rem" : "2.4rem")};
+        /* width: 2.4rem; */
+      }
     }
   }
 
@@ -121,6 +154,20 @@ const SideNav = styled.aside`
   display: flex;
   flex-direction: column;
   padding: 4.8rem 4rem;
+
+  @media (max-width: 936px) {
+    transform: ${({ navOpen }) =>
+      navOpen ? "" : "translateX(var(--negativeTablet))"};
+    width: var(--outTablet);
+  }
+
+  @media (max-width: 600px) {
+    background-color: rgba(0, 0, 0, 0.4);
+    transform: ${({ navOpen }) =>
+      navOpen ? "" : "translateX(var(--negativePhone))"};
+    width: var(--outPhone);
+  }
+
   .nav-list {
     list-style: none;
   }
