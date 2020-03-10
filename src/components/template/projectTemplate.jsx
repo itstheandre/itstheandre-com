@@ -55,16 +55,6 @@ export const query = graphql`
         }
       }
     }
-    projectImages: sanityProject(slug: { current: { eq: $slug } }) {
-      projectScreenshots {
-        asset {
-          fluid {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-    }
-
     previous: sanityProject(projectNumber: { eq: $previous }) {
       slug {
         current
@@ -79,9 +69,16 @@ export const query = graphql`
 `
 
 // const Project = ({ data }) => {
-const Project = ({ data }) => {
+const Project = ({ data, pageContext }) => {
+  // console.log(props)
+  // const { data } = props
+  console.log(pageContext)
+  console.log(pageContext?.prevProject)
+  const prevProject = pageContext?.prevProject?.slug?.current
+  const nextProject = pageContext?.nextProject?.slug?.current
   const after = data?.after?.slug?.current
   const previous = data?.previous?.slug?.current
+  const { pagePrefix } = pageContext
 
   const { display } = useDisplay()
 
@@ -170,28 +167,29 @@ const Project = ({ data }) => {
         </div>
 
         <div className="prevNext">
-          {previous ? (
+          {prevProject ? (
             <>
               <div className="arrow">
-                <Link to={`/projects/${previous}`}>
+                <Link to={`${pagePrefix}${prevProject}`}>
                   <img src={arrowLeft} alt="Previous Content" />
                 </Link>
               </div>
               <div className="directions">
-                <Link to={`/projects/${previous}`}>Previous</Link>
+                <Link to={`/projects/${prevProject}`}>Previous</Link>
               </div>
             </>
           ) : (
             <></>
           )}
+
           <div className="empty"></div>
-          {after ? (
+          {nextProject ? (
             <>
               <div className="directions">
-                <Link to={`/projects/${after}`}>Next</Link>
+                <Link to={`${pagePrefix}${nextProject}`}>Next</Link>
               </div>
               <div className="arrow">
-                <Link to={`/projects/${after}`}>
+                <Link to={`${pagePrefix}${nextProject}`}>
                   <img src={arrowRight} alt="" />
                 </Link>
               </div>

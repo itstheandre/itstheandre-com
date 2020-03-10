@@ -13,7 +13,7 @@ async function createProjects({ actions, graphql }) {
   )
   const result = await graphql(`
     query CREATE_PAGES {
-      allSanityProject {
+      allSanityProject(sort: { order: ASC, fields: projectNumber }) {
         edges {
           node {
             slug {
@@ -25,10 +25,13 @@ async function createProjects({ actions, graphql }) {
       }
     }
   `)
+
   const allProjects = result.data.allSanityProject.edges.map(({ node }) => node)
-  allProjects.forEach(project => {
+  allProjects.forEach((project, i) => {
     const previous = (Number(project.projectNumber) - 1).toString()
     const after = (Number(project.projectNumber) + 1).toString()
+    const prevProject = allProjects[i - 1]
+    const nextProject = allProjects[i + 1]
     actions.createPage({
       path: `/projects/${project.slug.current}`,
       component: projectTemplate,
@@ -36,6 +39,9 @@ async function createProjects({ actions, graphql }) {
         slug: project.slug.current,
         previous,
         after,
+        prevProject,
+        nextProject,
+        pagePrefix: "/projects/",
       },
     })
   })
