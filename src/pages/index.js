@@ -115,9 +115,9 @@ const Index = ({ data }) => {
                 <div className="aboutMe">
                   <div className="sectionText">Experience</div>
                   <div className="body">
-                    From Marketing to Sales and now Web Development,  I’m
-                    someone who’s interested in helping companies grow and
-                    achieve amazing things.
+                    From Marketing to Sales and now Web Development, I’m someone
+                    who’s interested in helping companies grow and achieve
+                    amazing things.
                   </div>
                 </div>
                 <div className="aboutMe">

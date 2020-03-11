@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components"
-import { Roboto, TTMonoBold, TTMonoReg } from "../utils/fonts"
+import { Roboto, TTMonoBold, TTMonoReg, TTReg } from "../utils/fonts"
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -11,7 +11,8 @@ html {
   font-size: 10px;
   --robotoFont: ${Roboto};
   --tt-mono : ${TTMonoBold};
-  --tt-reg: ${TTMonoReg};
+  --tt-reg: ${TTReg};
+  --tt-monoReg:${TTMonoReg};
   --out: 25vw;
   --negative: -25vw;
   --desktop: 936px;
