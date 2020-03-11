@@ -102,6 +102,30 @@ const ProjectStyled = styled.div`
     .tags {
       transform: translateY(-30%);
     }
+
+    @media (max-width: 936px) {
+      /* transition: transform 200ms;
+      transform: scale(1.1); */
+
+      .imageOverlay {
+        height: 0%;
+        background-color: 0;
+      }
+
+      .sectionText {
+        margin-bottom: 0;
+      }
+
+      .content {
+        /* height: 30%; */
+        padding-top: 0;
+        height: 0;
+        padding-bottom: 0;
+      }
+      .tags {
+        transform: translateY(0);
+      }
+    }
   }
 
   .imageOverlay {
