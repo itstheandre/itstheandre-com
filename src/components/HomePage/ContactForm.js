@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { Button } from "../../styles/Buttons"
 import { useWrapper } from "../../Context/WrapperContext"
+import { useState } from "react"
 //
 
 const StyledContactForm = styled.div`
@@ -59,6 +60,8 @@ const StyledContactForm = styled.div`
     input {
       width: 100%;
       margin: 1.6rem 0 3.2rem;
+      font-size: 2rem;
+      padding: 0.5rem;
       color: white;
       height: 3.2rem;
       background: none;
@@ -67,6 +70,9 @@ const StyledContactForm = styled.div`
 
     textarea {
       margin: 1.6rem 0 3.2rem;
+      color: white;
+      font-size: 2rem;
+      padding: 0.5rem;
       height: 20vh;
       line-height: 3rem;
       border: none;
@@ -80,8 +86,21 @@ const StyledContactForm = styled.div`
 
 const ContactForm = () => {
   const { footer } = useWrapper()
+  const [form, setForm] = useState({ name: "", email: "", message: "" })
+
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  console.log({ form })
   return (
-    <StyledContactForm ref={footer}>
+    <StyledContactForm
+      ref={footer}
+      name="contact"
+      action="/thanks/"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+    >
       <div className="fullWidth"></div>
       <div className="container">
         <div className="letsWork h1">Let's work together</div>
@@ -90,15 +109,15 @@ const ContactForm = () => {
             <label htmlFor="name" className="sectionText">
               Name
             </label>
-            <input type="text" />
+            <input type="text" id="name" name="name" onChange={handleChange} />
             <label htmlFor="name" className="sectionText">
               Email
             </label>
-            <input type="email" id="name" />
+            <input type="email" id="email" name="email" />
             <label htmlFor="message" className="sectionText">
               Message
             </label>
-            <textarea type="text" id="message" />
+            <textarea type="text" id="message" name="message" />
             <Button styleType="secondary" type="submit">
               Let's talk
             </Button>
