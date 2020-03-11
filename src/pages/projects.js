@@ -53,6 +53,7 @@ export const query = graphql`
 const ProjectsPage = styled.div`
   padding-top: 5.2rem;
 
+  margin-bottom: 15rem;
   .sectionText {
     margin-bottom: 2.4rem;
   }

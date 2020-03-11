@@ -1,4 +1,5 @@
 import React from "react"
+import Meta from "../components/Meta"
 import Sidebar from "./Navigation/Sidebar"
 import Nav from "./Navigation/Nav"
 import GlobalStyle from "../styles/GlobalStyles"
@@ -28,7 +29,7 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyle />
       <Sidebar navOpen={navOpen} />
-
+      <Meta />
       <Nav
         navOpen={navOpen}
         menuImage={menuImage}

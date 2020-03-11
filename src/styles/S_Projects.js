@@ -102,6 +102,27 @@ const ProjectStyled = styled.div`
     .tags {
       transform: translateY(-30%);
     }
+    @media (max-width: 936px) {
+      .imageOverlay {
+        height: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .sectionText {
+        margin-bottom: 0;
+      }
+
+      .content {
+        /* height: 30%; */
+        padding-top: 0;
+        height: 0;
+        padding-bottom: 0;
+      }
+
+      .tags {
+        transform: translateY(0);
+      }
+    }
   }
 
   .imageOverlay {
@@ -196,6 +217,7 @@ const ProjectTemplate = styled.div`
 
     .tags {
       grid-area: tags;
+      font-family: var(--tt-mono);
 
       .sectionText {
         margin-bottom: 1.2rem;
@@ -205,8 +227,12 @@ const ProjectTemplate = styled.div`
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 8rem;
-        gap: 1.2rem;
-        grid-gap: 1.2rem;
+        /* gap: 1.2rem;
+        grid-gap: 1.2rem; */
+        div {
+          margin-right: 1.2rem;
+          margin-bottom: 1.2rem;
+        }
         @media (max-width: 936px) {
           margin-bottom: 4.8rem;
         }

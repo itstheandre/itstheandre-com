@@ -1,3 +1,4 @@
 export const Roboto = "'Roboto', sans-serif"
 export const TTMonoBold = '"TTInterphasesMono-Bold", monospace;'
-export const TTMonoReg = '"TTInterphases-Regular", monospace;'
+export const TTReg = '"TTInterphases-Regular", monospace;'
+export const TTMonoReg = '"TTInterphasesMono-Regular", monospace;'

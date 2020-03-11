@@ -26,7 +26,7 @@ const Button = styled.button`
 `
 
 const Tags = styled.div`
-  font-family: var(--tt-reg);
+  font-family: var(--tt-monoReg);
   font-weight: normal;
   background-color: #dedede;
   color: #9a9a9a;

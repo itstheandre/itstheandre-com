@@ -58,15 +58,22 @@ const StyledContactForm = styled.div`
 
     input {
       width: 100%;
-      margin: 1.6rem 0 3.2rem;
+      font-family: var(--tt-monoReg);
+      font-size: 2rem;
       color: white;
+      margin: 1.6rem 0 3.2rem;
       height: 3.2rem;
       background: none;
+      padding: 0.5rem;
       border: 1px solid #fff;
     }
 
     textarea {
+      font-family: var(--tt-monoReg);
+      font-size: 2rem;
+      padding: 0.5rem;
       margin: 1.6rem 0 3.2rem;
+      color: white;
       height: 20vh;
       line-height: 3rem;
       border: none;
