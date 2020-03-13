@@ -89,7 +89,7 @@ export const query = graphql`
 const Project = ({ data, pageContext }) => {
   // console.log(props)
   // const { data } = props
-  console.log(pageContext)
+  console.log(data)
   console.log(pageContext?.prevProject)
   const prevProject = pageContext?.prevProject?.slug?.current
   const nextProject = pageContext?.nextProject?.slug?.current
