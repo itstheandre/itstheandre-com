@@ -2,19 +2,22 @@ import { useState } from "react"
 import { useEffect } from "react"
 
 export function useDisplay() {
-  function displaySize() {
-    const screen = window.innerWidth
-    if (screen > 960) {
-      return "desktop"
-    } else if (screen < 960 && screen > 600) {
-      return "tablet"
-    } else if (screen < 600) {
-      return "mobile"
-    }
-  }
+  const [display, setDisplay] = useState("desktop")
 
-  const displayOfUser = displaySize()
-  const [display, setDisplay] = useState(displayOfUser)
+  useEffect(() => {
+    function displaySize() {
+      const screen = window.innerWidth
+      if (screen > 960) {
+        return "desktop"
+      } else if (screen < 960 && screen > 600) {
+        return "tablet"
+      } else if (screen < 600) {
+        return "mobile"
+      }
+    }
+    const displayOfUser = displaySize()
+    setDisplay(displayOfUser)
+  }, [])
 
   useEffect(() => {
     function changeDisplay() {
@@ -27,8 +30,9 @@ export function useDisplay() {
         setDisplay("mobile")
       }
     }
+
     window.addEventListener("resize", changeDisplay)
-    return () => window.removeEventListener("resize", displaySize)
+    return () => window.removeEventListener("resize", changeDisplay)
   }, [display])
 
   console.log(display)
