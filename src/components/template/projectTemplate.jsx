@@ -20,6 +20,23 @@ export const query = graphql`
         asset {
           fluid {
             src
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      phoneImage {
+        asset {
+          fluid {
+            src
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      tabletImage {
+        asset {
+          fluid {
+            src
+            ...GatsbySanityImageFluid
           }
         }
       }
@@ -88,7 +105,6 @@ const Project = ({ data, pageContext }) => {
     description,
     link,
     length,
-    // heroImage,
     tags,
     client,
     team,

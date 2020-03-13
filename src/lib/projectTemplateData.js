@@ -16,16 +16,16 @@ export function useSafe() {
   }, [safeOptionToggle])
 }
 
-function imageData(display) {
+function imageData(display, allImages) {
   switch (display) {
     case "desktop":
-      return "this is desktop"
+      return allImages.heroImage
     // break
     case "tablet":
-      return "this is tablet"
+      return allImages.tabletImage
     // break
     case "mobile":
-      return "this is mobile"
+      return allImages.phoneImage
     // break
 
     default:
@@ -65,11 +65,14 @@ export function fillTemplate(node, display) {
 
   const heroImage = node.heroImage.asset.fluid
 
-  const imageInfo = imageData(display)
+  const phoneImage = node.phoneImage.asset.fluid
+  const tabletImage = node.tabletImage.asset.fluid
+
+  const imageInfo = imageData(display, { heroImage, phoneImage, tabletImage })
 
   const heroBackground = (
     <BgImg
-      fluid={heroImage}
+      fluid={imageInfo}
       Tag="div"
       className="fw"
       backgroundColor={node.heroBG}
