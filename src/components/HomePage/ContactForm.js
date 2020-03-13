@@ -130,7 +130,7 @@ const ContactForm = () => {
     } catch (error) {
       console.log(error)
       // setMessage('')
-      setUserMessage("erro")
+      setUserMessage("Something went wrong")
     }
     // fetch("/", {
     //   method: "POST",
