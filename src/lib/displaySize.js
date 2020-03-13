@@ -1,19 +1,20 @@
 import { useState } from "react"
 import { useEffect } from "react"
 
-function displaySize() {
-  const screen = window.innerWidth
-  if (screen > 960) {
-    return "desktop"
-  } else if (screen < 960 && screen > 600) {
-    return "tablet"
-  } else if (screen < 600) {
-    return "mobile"
-  }
-}
-
 export function useDisplay() {
-  const [display, setDisplay] = useState(displaySize())
+  function displaySize() {
+    const screen = window.innerWidth
+    if (screen > 960) {
+      return "desktop"
+    } else if (screen < 960 && screen > 600) {
+      return "tablet"
+    } else if (screen < 600) {
+      return "mobile"
+    }
+  }
+
+  const displayOfUser = displaySize()
+  const [display, setDisplay] = useState(displayOfUser)
 
   useEffect(() => {
     function changeDisplay() {
