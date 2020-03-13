@@ -111,7 +111,6 @@ const Project = ({ data, pageContext }) => {
     Parsing,
     projectImages,
     heroBackground,
-    imageInfo,
     teamValid,
     // projectScreenshotsArr,
   } = fillTemplate(data.sanityProject, display)

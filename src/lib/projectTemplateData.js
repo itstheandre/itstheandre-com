@@ -22,10 +22,10 @@ function imageData(display, allImages) {
       return allImages.heroImage
     // break
     case "tablet":
-      return allImages.tabletImage
+      return allImages.tabletImage || allImages.heroImage
     // break
     case "mobile":
-      return allImages.phoneImage
+      return allImages.phoneImage || allImages.heroImage
     // break
 
     default:
@@ -65,8 +65,8 @@ export function fillTemplate(node, display) {
 
   const heroImage = node.heroImage.asset.fluid
 
-  const phoneImage = node.phoneImage.asset.fluid
-  const tabletImage = node.tabletImage.asset.fluid
+  const phoneImage = node?.phoneImage?.asset?.fluid
+  const tabletImage = node?.tabletImage?.asset?.fluid
 
   const imageInfo = imageData(display, { heroImage, phoneImage, tabletImage })
 
@@ -102,7 +102,6 @@ export function fillTemplate(node, display) {
     projectScreenshotsArr,
     projectImages,
     heroBackground,
-    imageInfo,
     teamValid,
   }
 }
