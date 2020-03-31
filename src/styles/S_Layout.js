@@ -199,8 +199,7 @@ const BodyContainer = styled.main`
   /* width: 90vw; */
   margin: 0 auto;
   @media (max-width: 93.6rem) {
-    /* width: 50vw; */
-    max-width: 60rem;
+    max-width: 70rem;
   }
 
   @media (max-width: 600px) {
