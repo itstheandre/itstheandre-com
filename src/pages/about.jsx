@@ -1,17 +1,30 @@
 import React from "react"
 import { graphql, Link, navigate } from "gatsby"
-import Layout from "./layout"
+import Layout from "../components/layout"
 import { AboutPage } from "../styles/S_Layout"
 import { ProjectSection } from "../styles/S_Projects"
 import { Button } from "../styles/Buttons"
 import { useWrapper } from "../Context/WrapperContext"
-import ContactForm from "./HomePage/ContactForm"
-import ExperienceComponent from "./AboutPage/ExperienceComponent"
-import TechnologyList from "./AboutPage/TechnologyList"
+import ContactForm from "../components/HomePage/ContactForm"
+import ExperienceComponent from "../components/AboutPage/ExperienceComponent"
+import TechnologyList from "../components/AboutPage/TechnologyList"
 
 const About = ({ data }) => {
   const { ref, textChange } = useWrapper()
   // console.log(data)
+
+  console.log(data)
+
+  function retrieveType(data, string) {
+    return data.allSanityExperience.edges
+      .filter(({ node }) => node.xpType.includes(string))
+      .map(({ node }) => node)
+  }
+
+  const education = retrieveType(data, "Education")
+  const jobs = retrieveType(data, "Job")
+
+  console.log(jobs)
 
   const allSkills = data.allSanitySkills.edges.map(({ node }) => node)
 
@@ -48,7 +61,7 @@ const About = ({ data }) => {
                 <h1>What brought me here</h1>
               </div>
               <div className="listing">
-                {data.jobs.edges.map(({ node: job }, i) => (
+                {jobs.map((job, i) => (
                   <ExperienceComponent key={i} job={job} index={i} />
                 ))}
               </div>
@@ -63,8 +76,8 @@ const About = ({ data }) => {
                 </div>
                 <div className="eduSection">
                   {/* <EducationComponent key={i} education={education} /> */}
-                  {data.education.edges.map(({ node: education }, i) => (
-                    <ExperienceComponent key={i} job={education} index={i} />
+                  {education.map((student, i) => (
+                    <ExperienceComponent key={i} job={student} index={i} />
                   ))}
                 </div>
               </section>
@@ -105,33 +118,13 @@ export const query = graphql`
         }
       }
     }
-    jobs: allSanityExperience(
-      filter: { xpType: { eq: "Job" } }
-      sort: { fields: toOrder, order: DESC }
-    ) {
+    allSanityExperience(sort: { fields: toOrder, order: DESC }) {
       edges {
         node {
           jobTitle
           description
-          endDate(formatString: "MMM YYYY")
-          startingDate(formatString: "MMM YYYY")
-          title
-          company {
-            location
-            name
-            website
-          }
-        }
-      }
-    }
-    education: allSanityExperience(
-      filter: { xpType: { eq: "Education" } }
-      sort: { fields: toOrder, order: DESC }
-    ) {
-      edges {
-        node {
-          jobTitle
-          description
+          toOrder
+          xpType
           endDate(formatString: "MMM YYYY")
           startingDate(formatString: "MMM YYYY")
           title
