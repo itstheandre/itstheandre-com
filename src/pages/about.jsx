@@ -1,19 +1,19 @@
 import React from "react"
 import { graphql, Link, navigate } from "gatsby"
-import Layout from "./layout"
+import Layout from "../components/layout"
 import { AboutPage } from "../styles/S_Layout"
 import { ProjectSection } from "../styles/S_Projects"
 import { Button } from "../styles/Buttons"
 import { useWrapper } from "../Context/WrapperContext"
-import ContactForm from "./HomePage/ContactForm"
-import ExperienceComponent from "./AboutPage/ExperienceComponent"
-import TechnologyList from "./AboutPage/TechnologyList"
+import ContactForm from "../components/HomePage/ContactForm"
+import ExperienceComponent from "../components/AboutPage/ExperienceComponent"
+import TechnologyList from "../components/AboutPage/TechnologyList"
 
 const About = ({ data }) => {
   const { ref, textChange } = useWrapper()
   // console.log(data)
 
-  const allSkills = data.skills.edges.map(({ node }) => node)
+  const allSkills = data.allSanitySkills.edges.map(({ node }) => node)
 
   const allCategories = [...new Set(allSkills.map(el => el.category).flat())]
     .filter(el => el !== "Javascript")
@@ -97,7 +97,7 @@ export default About
 
 export const query = graphql`
   query ALL_EXPERIENCES {
-    skills: allSanitySkills {
+    allSanitySkills {
       edges {
         node {
           name
