@@ -1,13 +1,13 @@
 import React from "react"
 import { graphql, Link, navigate } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "./layout"
 import { AboutPage } from "../styles/S_Layout"
 import { ProjectSection } from "../styles/S_Projects"
 import { Button } from "../styles/Buttons"
 import { useWrapper } from "../Context/WrapperContext"
-import ContactForm from "../components/HomePage/ContactForm"
-import ExperienceComponent from "../components/AboutPage/ExperienceComponent"
-import TechnologyList from "../components/AboutPage/TechnologyList"
+import ContactForm from "./HomePage/ContactForm"
+import ExperienceComponent from "./AboutPage/ExperienceComponent"
+import TechnologyList from "./AboutPage/TechnologyList"
 
 const About = ({ data }) => {
   const { ref, textChange } = useWrapper()
