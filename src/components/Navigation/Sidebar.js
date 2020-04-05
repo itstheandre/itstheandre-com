@@ -11,11 +11,11 @@ const Sidebar = ({ navOpen }) => {
             Homepage
           </Link>
         </li>
-        {/* <li className="nav-item">
+        <li className="nav-item">
           <Link to="/about" className="nav-link">
             About Me
           </Link>
-        </li> */}
+        </li>
         <li className="nav-item">
           <Link to="/projects" className="nav-link">
             Projects

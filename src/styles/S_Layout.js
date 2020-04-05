@@ -266,6 +266,16 @@ const Page = styled.main`
   /* padding-top: 5.2rem; */
 
   width: 100%;
+  @media (max-width: 800px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+  @media (max-width: 650px) {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  /* @media (max) */
 
   header {
     width: 100%;
@@ -273,8 +283,13 @@ const Page = styled.main`
     position: relative;
     display: flex;
     align-items: center;
-    pointer-events: none;
+    pointer-events: ${props => {
+      if (!props.page) {
+        return "none"
+      } else return ""
+    }};
     margin-bottom: 16rem;
+    color: white;
     /* flex-direction: column; */
     @media (max-width: 936px) {
       flex-direction: column;
@@ -342,6 +357,230 @@ const Page = styled.main`
   }
 `
 
+const AboutPage = styled(Page)`
+  @media (max-width: 600px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 360px) {
+    width: 60%;
+  }
+  .fw {
+    @media (max-width: 700px) {
+      width: 200vw;
+      margin-left: -75vw;
+    }
+  }
+
+  .aboutPage {
+    z-index: 1000;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    @media (max-width: 900px) {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .heroText {
+      font-size: 3.6rem;
+      line-height: 4.8rem;
+      margin-bottom: 2.4rem;
+      font-family: var(--tt-mono);
+      @media (max-width: 936px) {
+        max-width: 50%;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 3.6rem;
+        line-height: 3.4rem;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    .aboutDescription {
+      font-family: var(--robotoFont);
+      font-size: 2rem;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 2.4rem;
+      margin-bottom: 4.8rem;
+      @media (max-width: 936px) {
+        max-width: 70%;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 2.2rem;
+        line-height: 3.4rem;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      @media (max-width: 360px) {
+        font-size: 2rem;
+        line-height: 2.4rem;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+  .otherSections {
+    .titleForSection {
+      margin-bottom: 4.8rem;
+      p {
+        text-transform: uppercase;
+        font-weight: normal;
+        font-size: 1.4rem;
+        letter-spacing: 2px;
+        font-family: var(--robotoFont);
+        margin-bottom: 2.4rem;
+      }
+
+      h1 {
+        font-size: 3.6rem;
+        font-family: var(--tt-mono);
+        font-weight: 800;
+      }
+    }
+    .pastJobs {
+      display: grid;
+      grid-gap: 2.4rem;
+      grid-template-columns: 0.45fr 1fr;
+      margin-bottom: 16rem;
+
+      @media (max-width: 700px) {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+      }
+
+      .listing {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .others {
+      margin-bottom: 16rem;
+      position: relative;
+    }
+
+    article {
+      margin-bottom: 4.8rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .date {
+        color: var(--grey);
+        font-family: var(--robotoFont);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 1.2rem;
+      }
+
+      .title {
+        font-size: 2.8rem;
+        font-family: var(--tt-mono);
+        margin-bottom: 1.2rem;
+      }
+
+      .company {
+        margin-bottom: 2.4rem;
+        a {
+          border-bottom: 0.5px solid black;
+        }
+      }
+
+      .description {
+        p {
+          font-size: 1.6rem;
+          line-height: 2.4rem;
+          margin-bottom: 1.6rem;
+        }
+        p:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .education {
+      padding: 8rem 0 4rem;
+
+      .eduSection {
+        display: grid;
+        grid-gap: 2.4rem;
+        grid-template-columns: repeat(2, 1fr);
+
+        @media (max-width: 600px) {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+
+    .onlineCourses {
+      padding: 4rem 0 8rem;
+    }
+  }
+
+  .fullWidthComp {
+    background: var(--grey);
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    z-index: -100;
+
+    @media (max-with: 700px) {
+      width: 200vw;
+      margin-left: -75vw;
+      margin-right: -50vw;
+      background: red;
+    }
+  }
+
+  .skills {
+    margin: 0 auto;
+    width: 76%;
+    @media (max-width: 700px) {
+      width: 100%;
+    }
+    .skillList {
+      display: grid;
+      grid-template-columns: 2fr 2fr 1fr;
+      @media (max-width: 500px) {
+        grid-template-columns: 1fr;
+      }
+
+      .skillListicle {
+        margin-bottom: 4.8rem;
+      }
+
+      h2 {
+        font-family: var(--tt-mono);
+        font-size: 2.8rem;
+        margin-bottom: 2.8rem;
+      }
+
+      ul {
+        list-style-type: none;
+        li {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+`
+
 export {
   LayoutBody,
   Header,
@@ -351,4 +590,5 @@ export {
   Footer,
   Page,
   Spacer,
+  AboutPage,
 }

@@ -9,6 +9,8 @@ const StyledContactForm = styled.div`
   padding-top: 8rem;
   position: relative;
   color: white;
+
+  /* width: 93.6rem; */
   @media (max-width: 936px) {
     margin-bottom: 8rem;
   }
@@ -27,7 +29,7 @@ const StyledContactForm = styled.div`
     z-index: -100;
   }
   .container {
-    width: 93.6rem;
+    /* width: 93.6rem; */
     margin: 0 auto;
     padding-top: 9rem;
     display: grid;
@@ -36,16 +38,24 @@ const StyledContactForm = styled.div`
       grid-template-columns: 1fr;
       width: 100%;
     }
+
+    @media (max-width: 800px) {
+      width: 70vw;
+    }
     @media (max-width: 600px) {
       width: 35rem;
     }
+    @media (max-width: 500px) {
+      width: 80%;
+    }
     .letsWork {
-      padding-left: 8rem;
+      /* padding-left: 8rem; */
+      width: 40%;
       @media (max-width: 936px) {
         padding-left: 0;
         width: 40%;
       }
-      @media (max-width: 600px) {
+      @media (max-width: 800px) {
         width: 80%;
       }
     }
@@ -144,7 +154,7 @@ const ContactForm = () => {
     //   .catch(error => alert(error))
   }
 
-  console.log({ form })
+  // console.log({ form })
   return (
     <StyledContactForm ref={footer}>
       <div className="fullWidth"></div>

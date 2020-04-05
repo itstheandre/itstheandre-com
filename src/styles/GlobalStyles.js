@@ -21,7 +21,7 @@ html {
   --negativeTablet: -50vw;
   --outPhone: 100vw;
   --negativePhone: -100vw;
-
+  --grey: #c6c6c6;
  
  
 }
