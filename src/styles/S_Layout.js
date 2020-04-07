@@ -7,6 +7,96 @@ const Spacer = styled.div`
   min-height: 100vh;
 `
 
+const Page = styled.main`
+  /* padding-top: 5.2rem; */
+
+  width: 100%;
+  @media (max-width: 800px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+  @media (max-width: 650px) {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  /* @media (max) */
+  .fw {
+    width: 100vw;
+    pointer-events: none;
+
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    z-index: -100;
+  }
+
+  header {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    pointer-events: "";
+    margin-bottom: 16rem;
+    color: white;
+    /* flex-direction: column; */
+    @media (max-width: 936px) {
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+    }
+  }
+
+  .fwWrapper {
+    /* background: blue; */
+    position: relative;
+    display: flex;
+
+    h1 {
+      @media (max-width: 936px) {
+        line-height: 120%;
+      }
+    }
+
+    .sectionText {
+      position: absolute;
+      color: white;
+      top: 5.2rem;
+      @media (max-width: 936px) {
+        position: static;
+      }
+    }
+  }
+
+  .sectionText {
+    margin-bottom: 2.4rem;
+  }
+
+  .h1 {
+    margin-bottom: 4rem;
+  }
+
+  .gridded {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2.4rem;
+    margin-bottom: 17.6rem;
+
+    @media (max-width: 936px) {
+      grid-template-columns: 1fr;
+    }
+
+    .body {
+      line-height: 2.4rem;
+    }
+  }
+`
+
 const LayoutBody = styled.main`
   width: 100%;
   position: relative;
@@ -202,8 +292,13 @@ const BodyContainer = styled.main`
     max-width: 70rem;
   }
 
+  @media (max-width: 700px) {
+    max-width: 100%;
+    width: 90vw;
+  }
+
   @media (max-width: 600px) {
-    width: 35rem;
+    width: 80vw;
   }
 `
 
@@ -261,68 +356,11 @@ const Footer = styled.footer`
     }
   }
 `
-
-const Page = styled.main`
-  /* padding-top: 5.2rem; */
-
-  width: 100%;
-  @media (max-width: 800px) {
-    width: 90%;
-    margin: 0 auto;
-  }
-  @media (max-width: 650px) {
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  /* @media (max) */
-
-  header {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    pointer-events: ${props => {
-      if (!props.page) {
-        return "none"
-      } else return ""
-    }};
-    margin-bottom: 16rem;
-    color: white;
-    /* flex-direction: column; */
-    @media (max-width: 936px) {
-      flex-direction: column;
-      align-items: start;
-      justify-content: center;
-    }
-  }
-
-  .fwWrapper {
-    /* background: blue; */
-    position: relative;
-    display: flex;
-
-    h1 {
-      @media (max-width: 936px) {
-        line-height: 120%;
-      }
-    }
-
-    .sectionText {
-      position: absolute;
-      color: white;
-      top: 5.2rem;
-      @media (max-width: 936px) {
-        position: static;
-      }
-    }
-  }
-
+export const AboutPage = styled.div`
   .fw {
     width: 100vw;
     pointer-events: none;
-
+    top: 0;
     height: 100%;
     background-color: black;
     position: absolute;
@@ -332,187 +370,182 @@ const Page = styled.main`
     margin-right: -50vw;
     z-index: -100;
   }
-
-  .sectionText {
-    margin-bottom: 2.4rem;
-  }
-
-  .h1 {
-    margin-bottom: 4rem;
-  }
-
-  .gridded {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 2.4rem;
-    margin-bottom: 17.6rem;
-
-    @media (max-width: 936px) {
-      grid-template-columns: 1fr;
-    }
-
-    .body {
-      line-height: 2.4rem;
-    }
-  }
-`
-
-const AboutPage = styled(Page)`
-  @media (max-width: 600px) {
+  width: 100%;
+  @media (max-width: 800px) {
     width: 90%;
     margin: 0 auto;
   }
-
-  @media (max-width: 360px) {
-    width: 60%;
+  @media (max-width: 650px) {
+    width: 80%;
+    margin: 0 auto;
   }
-  .fw {
-    @media (max-width: 700px) {
-      width: 200vw;
-      margin-left: -75vw;
+  .hero {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    position: relative;
+    margin-bottom: 16rem;
+    header {
+      width: 83%;
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      color: white;
+
+      @media (max-width: 400px) {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 3.6rem;
+        line-height: 4.8rem;
+        margin-bottom: 2.4rem;
+        font-family: var(--tt-mono);
+        @media (max-width: 936px) {
+          line-height: 120%;
+          max-width: 50%;
+        }
+        @media (max-width: 700px) {
+          line-height: 3.4rem;
+          max-width: 100%;
+        }
+
+        @media (max-width: 600px) {
+          line-height: 3rem;
+        }
+
+        @media (max-width: 400px) {
+          font-size: 3rem;
+        }
+      }
+
+      .aboutDescription {
+        font-family: var(--robotoFont);
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 2.4rem;
+        margin-bottom: 4.8rem;
+
+        @media (max-width: 936px) {
+          max-width: 70%;
+        }
+
+        @media (max-width: 600px) {
+          font-size: 2.2rem;
+          line-height: 3.4rem;
+          max-width: 100%;
+        }
+
+        @media (max-width: 500px) {
+          font-size: 2rem;
+          line-height: 2.6rem;
+        }
+
+        @media (max-width: 360px) {
+          font-size: 1.8rem;
+          line-height: 2.4rem;
+          width: 100%;
+        }
+      }
     }
   }
 
-  .aboutPage {
-    z-index: 1000;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    @media (max-width: 900px) {
+  .titleForSection {
+    margin-bottom: 4.8rem;
+    p {
+      text-transform: uppercase;
+      font-weight: normal;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      font-family: var(--robotoFont);
+      margin-bottom: 2.4rem;
+    }
+
+    h1 {
+      font-size: 3.6rem;
+      font-family: var(--tt-mono);
+      font-weight: 800;
+    }
+
+    @media (max-width: 450px) {
+      h1 {
+        font-size: 3rem;
+      }
+    }
+  }
+
+  .pastJobs {
+    display: grid;
+    grid-gap: 2.4rem;
+    grid-template-columns: 0.45fr 1fr;
+    margin-bottom: 16rem;
+
+    @media (max-width: 700px) {
       width: 90%;
       margin-left: auto;
       margin-right: auto;
     }
 
-    .heroText {
-      font-size: 3.6rem;
-      line-height: 4.8rem;
-      margin-bottom: 2.4rem;
-      font-family: var(--tt-mono);
-      @media (max-width: 936px) {
-        max-width: 50%;
-      }
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
 
-      @media (max-width: 600px) {
-        font-size: 3.6rem;
-        line-height: 3.4rem;
-        width: 100%;
-        max-width: 100%;
+    .listing {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  article {
+    margin-bottom: 4.8rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .date {
+      color: var(--grey);
+      font-family: var(--robotoFont);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.2rem;
+    }
+
+    .title {
+      font-size: 2.8rem;
+      font-family: var(--tt-mono);
+      margin-bottom: 1.2rem;
+    }
+
+    .company {
+      margin-bottom: 2.4rem;
+      a {
+        border-bottom: 0.5px solid black;
       }
     }
 
-    .aboutDescription {
-      font-family: var(--robotoFont);
-      font-size: 2rem;
-      font-style: normal;
-      font-weight: normal;
-      line-height: 2.4rem;
-      margin-bottom: 4.8rem;
-      @media (max-width: 936px) {
-        max-width: 70%;
-      }
-
-      @media (max-width: 600px) {
-        font-size: 2.2rem;
-        line-height: 3.4rem;
-        width: 100%;
-        max-width: 100%;
-      }
-
-      @media (max-width: 360px) {
-        font-size: 2rem;
+    .description {
+      p {
+        font-size: 1.6rem;
         line-height: 2.4rem;
-        width: 100%;
-        max-width: 100%;
+        margin-bottom: 1.6rem;
+      }
+      p:last-child {
+        margin-bottom: 0;
       }
     }
   }
-  .otherSections {
-    .titleForSection {
-      margin-bottom: 4.8rem;
-      p {
-        text-transform: uppercase;
-        font-weight: normal;
-        font-size: 1.4rem;
-        letter-spacing: 2px;
-        font-family: var(--robotoFont);
-        margin-bottom: 2.4rem;
-      }
-
-      h1 {
-        font-size: 3.6rem;
-        font-family: var(--tt-mono);
-        font-weight: 800;
-      }
-    }
-    .pastJobs {
-      display: grid;
-      grid-gap: 2.4rem;
-      grid-template-columns: 0.45fr 1fr;
-      margin-bottom: 16rem;
-
-      @media (max-width: 700px) {
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      @media (max-width: 600px) {
-        grid-template-columns: 1fr;
-      }
-
-      .listing {
-        display: flex;
-        flex-direction: column;
-      }
-    }
-
-    .others {
-      margin-bottom: 16rem;
-      position: relative;
-    }
-
-    article {
-      margin-bottom: 4.8rem;
-      &:last-child {
-        margin-bottom: 0;
-      }
-      .date {
-        color: var(--grey);
-        font-family: var(--robotoFont);
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 1.2rem;
-      }
-
-      .title {
-        font-size: 2.8rem;
-        font-family: var(--tt-mono);
-        margin-bottom: 1.2rem;
-      }
-
-      .company {
-        margin-bottom: 2.4rem;
-        a {
-          border-bottom: 0.5px solid black;
-        }
-      }
-
-      .description {
-        p {
-          font-size: 1.6rem;
-          line-height: 2.4rem;
-          margin-bottom: 1.6rem;
-        }
-        p:last-child {
-          margin-bottom: 0;
-        }
-      }
-    }
+  .educationBody {
+    min-height: 40vh;
+    margin-bottom: 16rem;
+    padding: 8rem 0;
+    position: relative;
 
     .education {
-      padding: 8rem 0 4rem;
-
+      height: 100%;
+      width: 100%;
       .eduSection {
         display: grid;
         grid-gap: 2.4rem;
@@ -522,35 +555,17 @@ const AboutPage = styled(Page)`
           grid-template-columns: 1fr;
         }
       }
-    }
 
-    .onlineCourses {
-      padding: 4rem 0 8rem;
-    }
-  }
-
-  .fullWidthComp {
-    background: var(--grey);
-    width: 100vw;
-    height: 100%;
-    position: absolute;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    z-index: -100;
-
-    @media (max-with: 700px) {
-      width: 200vw;
-      margin-left: -75vw;
-      margin-right: -50vw;
-      background: red;
+      .fw {
+        background-color: var(--grey);
+      }
     }
   }
 
   .skills {
     margin: 0 auto;
     width: 76%;
+    margin-bottom: 16rem;
     @media (max-width: 700px) {
       width: 100%;
     }
@@ -562,7 +577,12 @@ const AboutPage = styled(Page)`
       }
 
       .skillListicle {
-        margin-bottom: 4.8rem;
+        @media (max-width: 500px) {
+          margin-bottom: 4.8rem;
+          &:last-child {
+            margin-bottom: 0rem;
+          }
+        }
       }
 
       h2 {
@@ -575,6 +595,9 @@ const AboutPage = styled(Page)`
         list-style-type: none;
         li {
           margin-bottom: 1rem;
+          &:last-child {
+            margin-bottom: 0;
+          }
         }
       }
     }
@@ -590,5 +613,4 @@ export {
   Footer,
   Page,
   Spacer,
-  AboutPage,
 }

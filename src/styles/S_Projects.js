@@ -179,6 +179,10 @@ const ProjectStyled = styled.div`
 
 const ProjectTemplate = styled.div`
   margin-bottom: 8rem;
+  @media (max-width: 500px) {
+    width: 80%;
+    margin: 0 auto;
+  }
   .hero {
     height: 100vh;
     position: relative;

@@ -67,22 +67,16 @@ const ProjectsPage = styled.div`
   .h1 {
     margin-bottom: 4.8rem;
   }
+
+  @media (max-width: 500px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+  @media (max-width: 360px) {
+    width: 89%;
+    margin: 0 auto;
+  }
 `
-
-// const obj = {
-//   topic: "Topic / Tag",
-//   projectName: "Project Name",
-//   img: pic,
-//   content:
-//     "Breve descriçao do projeto. Hopefully curta mas que de para perceber o que é.",
-// }
-
-// const arrTest = [
-//   { ...obj, key: "1" },
-//   { ...obj, key: "2" },
-//   { ...obj, key: "3" },
-//   { ...obj, key: "4" },
-// ]
 
 const Projects = ({ data }) => {
   const allProjects = data.allSanityProject.edges.map(({ node }) => {

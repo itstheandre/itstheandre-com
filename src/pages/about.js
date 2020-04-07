@@ -31,77 +31,73 @@ const About = ({ data }) => {
     .filter(el => el !== "Javascript")
     .sort()
 
+  const onlinePart = (
+    <section className="onlineCourses">
+      <div className="titleForSection">
+        <h1>Online Courses</h1>
+      </div>
+    </section>
+  )
   // console.log(allSkills)
   return (
-    <section>
-      <Layout>
-        <AboutPage page={"/about"}>
-          <header className="fwWrapper aboutPage" ref={textChange}>
-            <h1 className="heroText">
-              My name is André and I'm a full stack developer
-            </h1>
+    <Layout>
+      <AboutPage>
+        <div className="hero">
+          <header ref={textChange}>
+            <h1>My name is André and I'm a full stack developer</h1>
             <p className="aboutDescription">
               After having a proven track record as a project and business
               developer with 25+ startups and leading projects with designers,
               developers and sales people on multiple countries, stages and
               industries, I am now looking for a full-stack developer role.
             </p>
-
             <a>
               <Button styleType="secondary">Check my CV</Button>
             </a>
-
-            <div className="fw" ref={ref}></div>
+            <div className="fw" ref={ref} />
           </header>
-          <main className="otherSections">
-            <section className="pastJobs">
-              <div className="titleForSection">
-                <p>Experience</p>
-                <h1>What brought me here</h1>
-              </div>
-              <div className="listing">
-                {jobs.map((job, i) => (
-                  <ExperienceComponent key={i} job={job} index={i} />
-                ))}
-              </div>
-            </section>
-            <div className="others">
-              <div className="fullWidthComp" />
+        </div>
+        <div className="pastJobs">
+          <div className="titleForSection">
+            <p>Experience</p>
+            <h1>What brought me here</h1>
+          </div>
+          <div className="listing">
+            {jobs.map((job, i) => (
+              <ExperienceComponent key={i} job={job} index={i} />
+            ))}
+          </div>
+        </div>
 
-              <section className="education">
-                <div className="titleForSection">
-                  <p>Education</p>
-                  <h1>My formal education</h1>
-                </div>
-                <div className="eduSection">
-                  {/* <EducationComponent key={i} education={education} /> */}
-                  {education.map((student, i) => (
-                    <ExperienceComponent key={i} job={student} index={i} />
-                  ))}
-                </div>
-              </section>
-              {/* <section className="onlineCourses">
-                <div className="titleForSection">
-                  <h1>Online Courses</h1>
-                </div>
-              </section> */}
+        <div className="educationBody">
+          <div className="education">
+            <div className="titleForSection">
+              <p>Education</p>
+              <h1>My formal education</h1>
             </div>
-            <section className="skills">
-              <div className="titleForSection">
-                <p>Skills</p>
-                <h1>Technologies</h1>
-              </div>
-              <div className="skillList">
-                {allCategories.map((el, i) => (
-                  <TechnologyList key={i} skills={allSkills} skillName={el} />
-                ))}
-              </div>
-            </section>
-          </main>
-          <ContactForm />
-        </AboutPage>
-      </Layout>
-    </section>
+            <div className="eduSection">
+              {education.map((student, i) => (
+                <ExperienceComponent key={i} job={student} index={i} />
+              ))}
+            </div>
+            <div className="fw" />
+          </div>
+        </div>
+        <div className="skills">
+          <div className="titleForSection">
+            <p>Skills</p>
+            <h1>Technologies</h1>
+          </div>
+
+          <div className="skillList">
+            {allCategories.map((el, i) => (
+              <TechnologyList key={i} skills={allSkills} skillName={el} />
+            ))}
+          </div>
+        </div>
+      </AboutPage>
+      <ContactForm />
+    </Layout>
   )
 }
 
