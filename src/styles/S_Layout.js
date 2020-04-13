@@ -557,7 +557,7 @@ export const AboutPage = styled.div`
       }
 
       .fw {
-        background-color: var(--grey);
+        background-color: var(--lightGrey);
       }
     }
   }

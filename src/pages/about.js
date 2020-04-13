@@ -51,7 +51,11 @@ const About = ({ data }) => {
               developers and sales people on multiple countries, stages and
               industries, I am now looking for a full-stack developer role.
             </p>
-            <a>
+            <a
+              href="https://drive.google.com/file/d/1xFqckdAovHSbNPjV2lP3woBwAHm1G6UW/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button styleType="secondary">Check my CV</Button>
             </a>
             <div className="fw" ref={ref} />

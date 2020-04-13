@@ -22,7 +22,7 @@ html {
   --outPhone: 100vw;
   --negativePhone: -100vw;
   --grey: #c6c6c6;
- 
+ --lightGrey: #f4f4f4;
  
 }
 :root {
