@@ -115,7 +115,7 @@ async function sendForm(form, formInfo) {
 
 const ContactForm = () => {
   const { footer } = useWrapper()
-  const [form, setForm] = useState({})
+  const [form, setForm] = useState({ name: "", email: "", message: "" })
   const [message, setMessage] = useState("")
 
   function handleChange(e) {
@@ -131,6 +131,9 @@ const ContactForm = () => {
 
   async function handleSubmit(e) {
     e.preventDefault()
+    if (!form.message || !form.name || !form.email) {
+      return
+    }
     // console.log("submited", { form })
     const formInfo = e.target
     try {
@@ -171,7 +174,13 @@ const ContactForm = () => {
             <label htmlFor="name" className="sectionText">
               Name
             </label>
-            <input type="text" id="name" name="name" onChange={handleChange} />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              onChange={handleChange}
+              value={form.name}
+            />
             <label htmlFor="name" className="sectionText">
               Email
             </label>
@@ -179,6 +188,7 @@ const ContactForm = () => {
               type="email"
               id="email"
               name="email"
+              value={form.email}
               onChange={handleChange}
             />
             <label htmlFor="message" className="sectionText">
@@ -188,6 +198,7 @@ const ContactForm = () => {
               type="text"
               id="message"
               name="message"
+              value={form.message}
               onChange={handleChange}
             />
             <Button styleType="secondary" type="submit">

@@ -5,5 +5,6 @@
  */
 
 // You can delete this file if you're not using it
+import "./static/fonts.css"
 
 export { wrapRootElement } from "./gatsby-browser"
