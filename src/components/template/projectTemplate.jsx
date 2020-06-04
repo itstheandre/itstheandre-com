@@ -98,7 +98,7 @@ const Project = ({ data, pageContext }) => {
   const { pagePrefix } = pageContext
 
   const { display } = useDisplay()
-  console.log({ display })
+  // console.log({ display })
   const {
     projectType,
     title,

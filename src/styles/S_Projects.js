@@ -318,6 +318,11 @@ const ProjectTemplate = styled.div`
           }
         }
 
+        ol {
+          margin-left: 2rem;
+          margin-bottom: 1rem;
+        }
+
         h4 {
           font-weight: bold;
           font-size: 1.6rem;
