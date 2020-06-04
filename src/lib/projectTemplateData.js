@@ -88,6 +88,7 @@ export function fillTemplate(node, display) {
 
   // const team = node.
   const { projectType, title, description, link } = node
+  console.log("link:", link)
   return {
     projectType,
     title,

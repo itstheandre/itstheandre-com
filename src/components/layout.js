@@ -1,17 +1,17 @@
 import React from "react"
 import Meta from "../components/Meta"
-import Sidebar from "./Navigation/Sidebar"
-import Nav from "./Navigation/Nav"
-import GlobalStyle from "../styles/GlobalStyles"
-import { LayoutBody, BodyContainer, Footer, Spacer } from "../styles/S_Layout"
-import { useNav } from "../lib/useNav"
 import { useWrapper } from "../Context/WrapperContext"
+import { useNav } from "../lib/useNav"
+import GlobalStyle from "../styles/GlobalStyles"
+import { BodyContainer, Footer, LayoutBody, Spacer } from "../styles/S_Layout"
 import {
-  twitterLogo,
+  gitHubLogo,
   instagramLogo,
   linkedinLogo,
-  gitHubLogo,
+  twitterLogo,
 } from "../utils/imageUpload"
+import Nav from "./Navigation/Nav"
+import Sidebar from "./Navigation/Sidebar"
 
 const logos = [
   { image: twitterLogo, link: "https://twitter.com/itstheandre" },
@@ -40,6 +40,7 @@ const Layout = ({ children }) => {
       {/* </div> */}
       <Spacer>
         <LayoutBody navOpen={navOpen} safeOption={safeOption}>
+          {/* // eslint-disable-next-line no-use-before-define    */}
           <div className="overlay" onClick={toggleNav}></div>
           <BodyContainer>{children}</BodyContainer>
         </LayoutBody>
@@ -53,7 +54,7 @@ const Layout = ({ children }) => {
                   rel="noopener noreferrer"
                   key={icon.link}
                 >
-                  <img src={icon.image} key={icon.link} />
+                  <img src={icon.image} key={icon.link} alt={icon.link} />
                 </a>
               ))}
             </div>

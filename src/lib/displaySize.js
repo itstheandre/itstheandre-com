@@ -7,13 +7,14 @@ export function useDisplay() {
   useEffect(() => {
     function displaySize() {
       const screen = window.innerWidth
-      if (screen > 960) {
+      if (screen >= 960) {
         return "desktop"
-      } else if (screen < 960 && screen > 600) {
-        return "tablet"
-      } else if (screen < 600) {
-        return "mobile"
       }
+      if (screen < 960 && screen > 600) {
+        return "tablet"
+      }
+      // screen <= 600
+      return "mobile"
     }
     const displayOfUser = displaySize()
     setDisplay(displayOfUser)
@@ -22,13 +23,15 @@ export function useDisplay() {
   useEffect(() => {
     function changeDisplay() {
       const screen = window.innerWidth
-      if (screen > 960) {
-        setDisplay("desktop")
-      } else if (screen < 960 && screen > 600) {
-        setDisplay("tablet")
-      } else if (screen < 600) {
-        setDisplay("mobile")
+      if (screen >= 960) {
+        return setDisplay("desktop")
       }
+      if (screen < 960 && screen > 600) {
+        return setDisplay("tablet")
+      }
+      // screen <= 600
+
+      return setDisplay("mobile")
     }
 
     window.addEventListener("resize", changeDisplay)

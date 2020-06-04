@@ -89,8 +89,8 @@ export const query = graphql`
 const Project = ({ data, pageContext }) => {
   // console.log(props)
   // const { data } = props
-  console.log(data)
-  console.log(pageContext?.prevProject)
+  // console.log(data)
+  // console.log(pageContext?.prevProject)
   const prevProject = pageContext?.prevProject?.slug?.current
   const nextProject = pageContext?.nextProject?.slug?.current
   const after = data?.after?.slug?.current
@@ -155,6 +155,7 @@ const Project = ({ data, pageContext }) => {
                       <a
                         href={el.github}
                         target="_blank"
+                        key={el.name}
                         rel="noopener noreferrer"
                       >
                         {el.name}
@@ -172,7 +173,11 @@ const Project = ({ data, pageContext }) => {
             <div className="h2">{title}</div>
             <div className="shortDescription">
               <ReactMarkdown source={description} />
-              <a href={link} target="_blank" rel="noopener noreferrer">
+              <a
+                href={`https://${link}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button>Take me there</Button>
               </a>
               {/* </Link> */}
