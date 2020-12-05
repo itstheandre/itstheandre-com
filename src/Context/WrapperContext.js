@@ -4,6 +4,8 @@ import { useInView } from "react-intersection-observer"
 export const WrapperContext = createContext()
 const WrapperContextProvider = WrapperContext.Provider
 
+const test = "hello".replace("hell", "")
+
 export function WrapperProvider({ children }) {
   const val = "-400px"
   const [ref, inView] = useInView({

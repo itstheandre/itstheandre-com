@@ -356,6 +356,7 @@ const Footer = styled.footer`
     }
   }
 `
+
 export const AboutPage = styled.div`
   .fw {
     width: 100vw;
